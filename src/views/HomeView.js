@@ -15,7 +15,6 @@ const HomeView = () => {
 
   return (
     <div>
-      <h1> EC Policy Editor</h1>
       <RuleList rules={rules} onRuleToggle={toggleRule} />
       <PolicyEditor yamlContent={yamlContent} />
       <ExportButton onExport={handleExport} />
