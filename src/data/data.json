@@ -1,0 +1,3030 @@
+{
+  "taskAnnotations": {
+    "policy.task.kind": [
+      {
+        "fullPath": "policy.task.kind.deny",
+        "packagePath": "policy.task.kind",
+        "packageInfo": {
+          "shortName": "kind",
+          "fullName": "policy.task.kind",
+          "shortNamespace": "task",
+          "title": "Tekton task kind checks",
+          "description": "Policies to verify that a Tekton task definition has the expected value for kind."
+        },
+        "shortName": "expected_kind",
+        "title": "Task definition has expected kind",
+        "description": "Confirm the task definition has the kind \"Task\".",
+        "anchor": "kind__expected_kind",
+        "warningOrFailure": "failure",
+        "failureMsg": "Unexpected kind '%s' for task definition",
+        "file": "policy/task/kind.rego",
+        "row": 25
+      },
+      {
+        "fullPath": "policy.task.kind.deny",
+        "packagePath": "policy.task.kind",
+        "packageInfo": {
+          "shortName": "kind",
+          "fullName": "policy.task.kind",
+          "shortNamespace": "task",
+          "title": "Tekton task kind checks",
+          "description": "Policies to verify that a Tekton task definition has the expected value for kind."
+        },
+        "shortName": "kind_present",
+        "title": "Kind field is present in task definition",
+        "description": "Confirm the task definition includes the kind field.",
+        "anchor": "kind__kind_present",
+        "warningOrFailure": "failure",
+        "failureMsg": "Required field 'kind' not found",
+        "file": "policy/task/kind.rego",
+        "row": 39
+      }
+    ]
+  },
+  "taskCollections": [],
+  "buildTaskAnnotations": {
+    "policy.build_task.labels": [
+      {
+        "fullPath": "policy.build_task.labels.deny",
+        "packagePath": "policy.build_task.labels",
+        "packageInfo": {
+          "shortName": "labels",
+          "fullName": "policy.build_task.labels",
+          "shortNamespace": "build_task",
+          "title": "Tekton task build type label checks",
+          "description": "Policies to verify that a Tekton build task definition has the required build type label."
+        },
+        "shortName": "build_type_label_set",
+        "title": "Build task has build type label",
+        "description": "Confirm the build task definition has the required build type label.",
+        "anchor": "labels__build_type_label_set",
+        "warningOrFailure": "failure",
+        "failureMsg": "The required build label '%s' is missing",
+        "file": "policy/build_task/labels.rego",
+        "row": 27
+      },
+      {
+        "fullPath": "policy.build_task.labels.deny",
+        "packagePath": "policy.build_task.labels",
+        "packageInfo": {
+          "shortName": "labels",
+          "fullName": "policy.build_task.labels",
+          "shortNamespace": "build_task",
+          "title": "Tekton task build type label checks",
+          "description": "Policies to verify that a Tekton build task definition has the required build type label."
+        },
+        "shortName": "build_task_has_label",
+        "title": "Build task has label",
+        "description": "Confirm that the build task definition includes at least one label.",
+        "anchor": "labels__build_task_has_label",
+        "warningOrFailure": "failure",
+        "failureMsg": "The task definition does not include any labels",
+        "file": "policy/build_task/labels.rego",
+        "row": 40
+      }
+    ]
+  },
+  "buildTaskCollections": [],
+  "pipelineAnnotations": {
+    "policy.pipeline.basic": [
+      {
+        "fullPath": "policy.pipeline.basic.deny",
+        "packagePath": "policy.pipeline.basic",
+        "packageInfo": {
+          "shortName": "basic",
+          "fullName": "policy.pipeline.basic",
+          "shortNamespace": "pipeline",
+          "title": "Pipeline definition sanity checks",
+          "description": "Policies to confirm the Tekton Pipeline definition has the expected kind."
+        },
+        "shortName": "expected_kind",
+        "title": "Pipeline definition has expected kind",
+        "description": "Confirm that the pipeline definition has the kind \"Pipeline\".",
+        "anchor": "basic__expected_kind",
+        "warningOrFailure": "failure",
+        "failureMsg": "Unexpected kind '%s' for pipeline definition",
+        "file": "policy/pipeline/basic.rego",
+        "row": 28
+      }
+    ],
+    "policy.pipeline.required_tasks": [
+      {
+        "fullPath": "policy.pipeline.required_tasks.deny",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "shortNamespace": "pipeline",
+          "title": "Required tasks",
+          "description": "RHTAP expects that certain Tekton tasks are executed during image builds. This package includes policy rules to confirm that the pipeline definition includes those required tasks."
+        },
+        "shortName": "tasks_found",
+        "title": "Pipeline contains tasks",
+        "description": "Confirm at least one task is present in the pipeline definition.",
+        "anchor": "required_tasks__tasks_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "No tasks found in pipeline",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 25
+      },
+      {
+        "fullPath": "policy.pipeline.required_tasks.warn",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "shortNamespace": "pipeline",
+          "title": "Required tasks",
+          "description": "RHTAP expects that certain Tekton tasks are executed during image builds. This package includes policy rules to confirm that the pipeline definition includes those required tasks."
+        },
+        "shortName": "required_tasks_found",
+        "title": "Required tasks found in pipeline definition",
+        "description": "Produce a warning if a task list does not exist in the acceptable bundles rule data.",
+        "anchor": "required_tasks__required_tasks_found",
+        "warningOrFailure": "warning",
+        "failureMsg": "Required tasks do not exist for pipeline %q",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 39
+      },
+      {
+        "fullPath": "policy.pipeline.required_tasks.deny",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "shortNamespace": "pipeline",
+          "title": "Required tasks",
+          "description": "RHTAP expects that certain Tekton tasks are executed during image builds. This package includes policy rules to confirm that the pipeline definition includes those required tasks."
+        },
+        "shortName": "missing_required_task",
+        "title": "Missing required task",
+        "description": "Ensure that the set of required tasks is included in the Pipeline definition.",
+        "anchor": "required_tasks__missing_required_task",
+        "warningOrFailure": "failure",
+        "failureMsg": "%s is missing",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 58
+      },
+      {
+        "fullPath": "policy.pipeline.required_tasks.warn",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "shortNamespace": "pipeline",
+          "title": "Required tasks",
+          "description": "RHTAP expects that certain Tekton tasks are executed during image builds. This package includes policy rules to confirm that the pipeline definition includes those required tasks."
+        },
+        "shortName": "missing_future_required_task",
+        "title": "Missing future required task",
+        "description": "Produce a warning when a task that will be required in the future is not currently included in the Pipeline definition.",
+        "anchor": "required_tasks__missing_future_required_task",
+        "warningOrFailure": "warning",
+        "failureMsg": "%s is missing and will be required in the future",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 77
+      },
+      {
+        "fullPath": "policy.pipeline.required_tasks.deny",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "shortNamespace": "pipeline",
+          "title": "Required tasks",
+          "description": "RHTAP expects that certain Tekton tasks are executed during image builds. This package includes policy rules to confirm that the pipeline definition includes those required tasks."
+        },
+        "shortName": "required_tasks_list_present",
+        "title": "Required task list is present in rule data",
+        "description": "Confirm the `required-tasks` rule data was provided, since it's required by the policy rules in this package.",
+        "anchor": "required_tasks__required_tasks_list_present",
+        "warningOrFailure": "failure",
+        "failureMsg": "The required tasks list is missing from the rule data",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 97
+      }
+    ],
+    "policy.pipeline.task_bundle": [
+      {
+        "fullPath": "policy.pipeline.task_bundle.deny",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "shortNamespace": "pipeline",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happens during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks in a Pipeline definition are defined in task bundles, and that the task bundles are from the list of known and trusted bundles."
+        },
+        "shortName": "disallowed_task_reference",
+        "title": "Task bundle was not used or is not defined",
+        "description": "Check for the existence of a task bundle. This rule will fail if the task is not called from a bundle.",
+        "anchor": "task_bundle__disallowed_task_reference",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' does not contain a bundle reference",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 30
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.deny",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "shortNamespace": "pipeline",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happens during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks in a Pipeline definition are defined in task bundles, and that the task bundles are from the list of known and trusted bundles."
+        },
+        "shortName": "empty_task_bundle_reference",
+        "title": "Task bundle reference is empty",
+        "description": "Check that a valid task bundle reference is being used.",
+        "anchor": "task_bundle__empty_task_bundle_reference",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' uses an empty bundle image reference",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 43
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.warn",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "shortNamespace": "pipeline",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happens during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks in a Pipeline definition are defined in task bundles, and that the task bundles are from the list of known and trusted bundles."
+        },
+        "shortName": "unpinned_task_bundle",
+        "title": "Unpinned task bundle reference",
+        "description": "Check if the Tekton Bundle used for the Tasks in the Pipeline definition is pinned to a digest.",
+        "anchor": "task_bundle__unpinned_task_bundle",
+        "warningOrFailure": "warning",
+        "failureMsg": "Pipeline task '%s' uses an unpinned task bundle reference '%s'",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 57
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.warn",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "shortNamespace": "pipeline",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happens during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks in a Pipeline definition are defined in task bundles, and that the task bundles are from the list of known and trusted bundles."
+        },
+        "shortName": "out_of_date_task_bundle",
+        "title": "Task bundle is out of date",
+        "description": "For each Task in the Pipeline definition, check if the Tekton Bundle used is the most recent xref:acceptable_bundles.adoc#_task_bundles[acceptable bundle].",
+        "anchor": "task_bundle__out_of_date_task_bundle",
+        "warningOrFailure": "warning",
+        "failureMsg": "Pipeline task '%s' uses an out of date task bundle '%s'",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 71
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.deny",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "shortNamespace": "pipeline",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happens during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks in a Pipeline definition are defined in task bundles, and that the task bundles are from the list of known and trusted bundles."
+        },
+        "shortName": "unacceptable_task_bundle",
+        "title": "Task bundle is not acceptable",
+        "description": "For each Task in the Pipeline definition, check if the Tekton Bundle used is an xref:acceptable_bundles.adoc#_task_bundles[acceptable bundle] given the tracked effective_on date.",
+        "anchor": "task_bundle__unacceptable_task_bundle",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' uses an unacceptable task bundle '%s'",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 86
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.deny",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "shortNamespace": "pipeline",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happens during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks in a Pipeline definition are defined in task bundles, and that the task bundles are from the list of known and trusted bundles."
+        },
+        "shortName": "missing_required_data",
+        "title": "Missing required data",
+        "description": "Confirm the `task-bundles` rule data was provided, since it's required by the policy rules in this package.",
+        "anchor": "task_bundle__missing_required_data",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required task-bundles data",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 99
+      }
+    ]
+  },
+  "pipelineCollections": [],
+  "releaseAnnotations": {
+    "policy.release.attestation_type": [
+      {
+        "fullPath": "policy.release.attestation_type.deny",
+        "packagePath": "policy.release.attestation_type",
+        "packageInfo": {
+          "shortName": "attestation_type",
+          "fullName": "policy.release.attestation_type",
+          "shortNamespace": "release",
+          "title": "Attestation type",
+          "description": "Sanity checks related to the format of the image build's attestation."
+        },
+        "shortName": "known_attestation_type",
+        "title": "Known attestation type found",
+        "description": "Confirm the attestation found for the image has a known attestation type.",
+        "solution": "Make sure the \"_type\" field in the attestation is supported. Supported types are configured in xref:ec-cli:ROOT:configuration.adoc#_data_sources[data sources].",
+        "anchor": "attestation_type__known_attestation_type",
+        "warningOrFailure": "failure",
+        "failureMsg": "Unknown attestation type '%s'",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/attestation_type.rego",
+        "row": 31
+      },
+      {
+        "fullPath": "policy.release.attestation_type.deny",
+        "packagePath": "policy.release.attestation_type",
+        "packageInfo": {
+          "shortName": "attestation_type",
+          "fullName": "policy.release.attestation_type",
+          "shortNamespace": "release",
+          "title": "Attestation type",
+          "description": "Sanity checks related to the format of the image build's attestation."
+        },
+        "shortName": "pipelinerun_attestation_found",
+        "title": "PipelineRun attestation found",
+        "description": "Confirm at least one PipelineRun attestation is present.",
+        "solution": "Make sure the attestation being verified was generated from a Tekton pipelineRun.",
+        "anchor": "attestation_type__pipelinerun_attestation_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing pipelinerun attestation",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/attestation_type.rego",
+        "row": 51
+      },
+      {
+        "fullPath": "policy.release.attestation_type.deny",
+        "packagePath": "policy.release.attestation_type",
+        "packageInfo": {
+          "shortName": "attestation_type",
+          "fullName": "policy.release.attestation_type",
+          "shortNamespace": "release",
+          "title": "Attestation type",
+          "description": "Sanity checks related to the format of the image build's attestation."
+        },
+        "shortName": "deprecated_policy_attestation_format",
+        "title": "Deprecated policy attestation format",
+        "description": "The Enterprise Contract CLI now places the attestation data in a different location. This check fails if the expected new format is not found.",
+        "solution": "Use a newer version of the Enterprise Contract CLI.",
+        "anchor": "attestation_type__deprecated_policy_attestation_format",
+        "warningOrFailure": "failure",
+        "failureMsg": "Deprecated policy attestation format found",
+        "effectiveOn": "2023-08-31T00:00:00Z",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/attestation_type.rego",
+        "row": 69
+      }
+    ],
+    "policy.release.base_image_registries": [
+      {
+        "fullPath": "policy.release.base_image_registries.deny",
+        "packagePath": "policy.release.base_image_registries",
+        "packageInfo": {
+          "shortName": "base_image_registries",
+          "fullName": "policy.release.base_image_registries",
+          "shortNamespace": "release",
+          "title": "Base image checks",
+          "description": "This package is responsible for verifying the base (parent) images reported in the attestation are acceptable."
+        },
+        "shortName": "base_image_permitted",
+        "title": "Base image comes from permitted registry",
+        "description": "Verify that the base images used when building a container image come from a known set of trusted registries to reduce potential supply chain attacks. By default this policy defines trusted registries as registries that are fully maintained by Red Hat and only contain content produced by Red Hat. The list of permitted registries can be customized by setting the `allowed_registry_prefixes` list in the rule data.",
+        "solution": "Make sure the image used in each task comes from a trusted registry. The list of trusted registries is a configurable xref:ec-cli:ROOT:configuration.adoc#_data_sources[data source].",
+        "anchor": "base_image_registries__base_image_permitted",
+        "warningOrFailure": "failure",
+        "failureMsg": "Base image %q is from a disallowed registry",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/base_image_registries.rego",
+        "row": 37
+      },
+      {
+        "fullPath": "policy.release.base_image_registries.deny",
+        "packagePath": "policy.release.base_image_registries",
+        "packageInfo": {
+          "shortName": "base_image_registries",
+          "fullName": "policy.release.base_image_registries",
+          "shortNamespace": "release",
+          "title": "Base image checks",
+          "description": "This package is responsible for verifying the base (parent) images reported in the attestation are acceptable."
+        },
+        "shortName": "base_image_info_found",
+        "title": "Base image task result was provided",
+        "description": "Verify the attestation provides the expected information about which base images were used during the build process. The base image information is expected to be found in a task result called BASE_IMAGES_DIGESTS.",
+        "solution": "A Tekton task must exist that emits a result named BASE_IMAGES_DIGESTS.",
+        "anchor": "base_image_registries__base_image_info_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "Base images result is missing",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/base_image_registries.rego",
+        "row": 60
+      },
+      {
+        "fullPath": "policy.release.base_image_registries.deny",
+        "packagePath": "policy.release.base_image_registries",
+        "packageInfo": {
+          "shortName": "base_image_registries",
+          "fullName": "policy.release.base_image_registries",
+          "shortNamespace": "release",
+          "title": "Base image checks",
+          "description": "This package is responsible for verifying the base (parent) images reported in the attestation are acceptable."
+        },
+        "shortName": "allowed_registries_provided",
+        "title": "Allowed base image registry prefixes list was provided",
+        "description": "Confirm the `allowed_registry_prefixes` rule data was provided, since it's required by the policy rules in this package.",
+        "solution": "Make sure to configure a list of trusted registries as a xref:ec-cli:ROOT:configuration.adoc#_data_sources[data source].",
+        "anchor": "base_image_registries__allowed_registries_provided",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required allowed_registry_prefixes rule data",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/base_image_registries.rego",
+        "row": 85
+      }
+    ],
+    "policy.release.buildah_build_task": [
+      {
+        "fullPath": "policy.release.buildah_build_task.deny",
+        "packagePath": "policy.release.buildah_build_task",
+        "packageInfo": {
+          "shortName": "buildah_build_task",
+          "fullName": "policy.release.buildah_build_task",
+          "shortNamespace": "release",
+          "title": "Buildah build task",
+          "description": "This package is responsible for verifying the buildah build task"
+        },
+        "shortName": "buildah_task_has_dockerfile_param",
+        "title": "Buildah task has Dockerfile param defined",
+        "description": "Verify that a DOCKERFILE parameter was provided to the buildah task.",
+        "solution": "Make sure the buildah task has a parameter named 'DOCKERFILE'.",
+        "anchor": "buildah_build_task__buildah_task_has_dockerfile_param",
+        "warningOrFailure": "failure",
+        "failureMsg": "The DOCKERFILE param was not included in the buildah task(s): %q",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/buildah_build_task.rego",
+        "row": 31
+      },
+      {
+        "fullPath": "policy.release.buildah_build_task.deny",
+        "packagePath": "policy.release.buildah_build_task",
+        "packageInfo": {
+          "shortName": "buildah_build_task",
+          "fullName": "policy.release.buildah_build_task",
+          "shortNamespace": "release",
+          "title": "Buildah build task",
+          "description": "This package is responsible for verifying the buildah build task"
+        },
+        "shortName": "buildah_uses_local_dockerfile",
+        "title": "Buildah task uses a local Dockerfile",
+        "description": "Verify the Dockerfile used in the buildah task was not fetched from an external source.",
+        "solution": "Make sure the 'DOCKERFILE' parameter does not come from an external source.",
+        "anchor": "buildah_build_task__buildah_uses_local_dockerfile",
+        "warningOrFailure": "failure",
+        "failureMsg": "DOCKERFILE param value (%s) is an external source",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/buildah_build_task.rego",
+        "row": 55
+      }
+    ],
+    "policy.release.builtin.attestation": [
+      {
+        "fullPath": "policy.release.builtin.attestation.deny",
+        "packagePath": "policy.release.builtin.attestation",
+        "packageInfo": {
+          "shortName": "builtin_attestation",
+          "fullName": "policy.release.builtin.attestation",
+          "shortNamespace": "release",
+          "title": "Builtin attestation policies",
+          "description": "This package is responsible for validating attestation signature and syntax. Note that builtin policies are always included and cannot be skipped regardless of your policy."
+        },
+        "shortName": "signature_check",
+        "title": "Attestation signature",
+        "description": "Validates the cryptographic signature of the attestation.",
+        "solution": "Examine the signature of the attestation, provided key material or trust chain for verification.",
+        "anchor": "builtin_attestation__signature_check",
+        "warningOrFailure": "failure",
+        "failureMsg": "No image attestations found matching the given public key. Verify the correct public key was provided, and one or more attestations were created.",
+        "collections": [
+          "builtin"
+        ],
+        "file": "policy/release/attestation.rego",
+        "row": 26
+      },
+      {
+        "fullPath": "policy.release.builtin.attestation.deny",
+        "packagePath": "policy.release.builtin.attestation",
+        "packageInfo": {
+          "shortName": "builtin_attestation",
+          "fullName": "policy.release.builtin.attestation",
+          "shortNamespace": "release",
+          "title": "Builtin attestation policies",
+          "description": "This package is responsible for validating attestation signature and syntax. Note that builtin policies are always included and cannot be skipped regardless of your policy."
+        },
+        "shortName": "syntax_check",
+        "title": "Attestation syntax",
+        "description": "Validates the syntax of the attestation.",
+        "solution": "Make sure that the attestation is well formed and syntactically correct.",
+        "anchor": "builtin_attestation__syntax_check",
+        "warningOrFailure": "failure",
+        "failureMsg": "Attestation syntax check failed: %s",
+        "collections": [
+          "builtin"
+        ],
+        "file": "policy/release/attestation.rego",
+        "row": 43
+      }
+    ],
+    "policy.release.builtin.image": [
+      {
+        "fullPath": "policy.release.builtin.image.deny",
+        "packagePath": "policy.release.builtin.image",
+        "packageInfo": {
+          "shortName": "builtin_image",
+          "fullName": "policy.release.builtin.image",
+          "shortNamespace": "release",
+          "title": "Builtin image policies",
+          "description": "This package is responsible for validating image signature. Note that builtin policies are always included and cannot be skipped regardless of your policy configuration."
+        },
+        "shortName": "signature_check",
+        "title": "Image signature",
+        "description": "Validates the cryptographic signature of the image.",
+        "solution": "Examine the signature of the image, provided key material or trust chain for verification.",
+        "anchor": "builtin_image__signature_check",
+        "warningOrFailure": "failure",
+        "failureMsg": "No image signatures found matching the given public key. Verify the correct public key was provided, and a signature was created.",
+        "collections": [
+          "builtin"
+        ],
+        "file": "policy/release/image.rego",
+        "row": 26
+      }
+    ],
+    "policy.release.cve": [
+      {
+        "fullPath": "policy.release.cve.deny",
+        "packagePath": "policy.release.cve",
+        "packageInfo": {
+          "shortName": "cve",
+          "fullName": "policy.release.cve",
+          "shortNamespace": "release",
+          "title": "CVE checks",
+          "description": "This package is responsible for verifying a CVE scan was performed during the build pipeline, and that the image under test does not contain CVEs of certain security levels."
+        },
+        "shortName": "cve_blockers",
+        "title": "Blocking CVE check",
+        "description": "The SLSA Provenance attestation for the image is inspected to ensure CVEs of certain security levels have not been detected. If detected, this policy rule will fail. By default, only CVEs of critical and high security level cause a failure. This is configurable by the rule data key `restrict_cve_security_levels`. The available levels are critical, high, medium, low, and unknown.",
+        "solution": "Make sure to address any CVE's related to the image. The CVEs are detected by the task that runs a Clair scan and emits a result named `CLAIR_SCAN_RESULT`.",
+        "anchor": "cve__cve_blockers",
+        "warningOrFailure": "failure",
+        "failureMsg": "Found %d CVE vulnerabilities of %s security level",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/cve.rego",
+        "row": 38
+      },
+      {
+        "fullPath": "policy.release.cve.warn",
+        "packagePath": "policy.release.cve",
+        "packageInfo": {
+          "shortName": "cve",
+          "fullName": "policy.release.cve",
+          "shortNamespace": "release",
+          "title": "CVE checks",
+          "description": "This package is responsible for verifying a CVE scan was performed during the build pipeline, and that the image under test does not contain CVEs of certain security levels."
+        },
+        "shortName": "cve_warnings",
+        "title": "Non-blocking CVE check",
+        "description": "The SLSA Provenance attestation for the image is inspected to ensure CVEs of certain security levels have not been detected. If detected, this policy rule will raise a warning. By default, the list of CVE security levels used by this policy is empty. However, this is configurable by the rule data key `warn_cve_security_levels`. The available levels are critical, high, medium, low, and unknown.",
+        "solution": "Make sure to address any CVE's related to the image. The CVEs are detected by the task that runs a Clair scan and emits a result named `CLAIR_SCAN_RESULT`.",
+        "anchor": "cve__cve_warnings",
+        "warningOrFailure": "warning",
+        "failureMsg": "Found %d non-blocking CVE vulnerabilities of %s security level",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/cve.rego",
+        "row": 64
+      },
+      {
+        "fullPath": "policy.release.cve.deny",
+        "packagePath": "policy.release.cve",
+        "packageInfo": {
+          "shortName": "cve",
+          "fullName": "policy.release.cve",
+          "shortNamespace": "release",
+          "title": "CVE checks",
+          "description": "This package is responsible for verifying a CVE scan was performed during the build pipeline, and that the image under test does not contain CVEs of certain security levels."
+        },
+        "shortName": "cve_results_found",
+        "title": "CVE scan results found",
+        "description": "Confirm that clair-scan task results are present in the SLSA Provenance attestation of the build pipeline.",
+        "solution": "Make sure there is a successful task in the build pipeline that runs a Clair scan and creates a task result called `CLAIR_SCAN_RESULT`.",
+        "anchor": "cve__cve_results_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "Clair CVE scan results were not found",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/cve.rego",
+        "row": 86
+      }
+    ],
+    "policy.release.external_parameters": [
+      {
+        "fullPath": "policy.release.external_parameters.deny",
+        "packagePath": "policy.release.external_parameters",
+        "packageInfo": {
+          "shortName": "external_parameters",
+          "fullName": "policy.release.external_parameters",
+          "shortNamespace": "release",
+          "title": "External parameters",
+          "description": "Verify the attribute .predicate.buildDefinition.externalParameters of a SLSA Provenance v1.0 matches the expectation."
+        },
+        "shortName": "pipeline_run_params",
+        "title": "Pipeline run params",
+        "description": "Verify the PipelineRun was initialized with a set of expected parameters. By default it asserts git-repo, git-revision, and output-image are provided with non-empty values. This is configurable by the rule data key `pipeline_run_params`. Any additional parameters are NOT allowed.",
+        "anchor": "external_parameters__pipeline_run_params",
+        "warningOrFailure": "failure",
+        "failureMsg": "PipelineRun params, %v, do not match expectation, %v.",
+        "file": "policy/release/external_parameters.rego",
+        "row": 27
+      },
+      {
+        "fullPath": "policy.release.external_parameters.deny",
+        "packagePath": "policy.release.external_parameters",
+        "packageInfo": {
+          "shortName": "external_parameters",
+          "fullName": "policy.release.external_parameters",
+          "shortNamespace": "release",
+          "title": "External parameters",
+          "description": "Verify the attribute .predicate.buildDefinition.externalParameters of a SLSA Provenance v1.0 matches the expectation."
+        },
+        "shortName": "restrict_shared_volumes",
+        "title": "Restrict shared volumes",
+        "description": "Verify the PipelineRun did not use any pre-existing PersistentVolumeClaim workspaces.",
+        "anchor": "external_parameters__restrict_shared_volumes",
+        "warningOrFailure": "failure",
+        "failureMsg": "PipelineRun uses shared volumes, %v.",
+        "file": "policy/release/external_parameters.rego",
+        "row": 50
+      }
+    ],
+    "policy.release.github_certificate": [
+      {
+        "fullPath": "policy.release.github_certificate.warn",
+        "packagePath": "policy.release.github_certificate",
+        "packageInfo": {
+          "shortName": "github_certificate",
+          "fullName": "policy.release.github_certificate",
+          "shortNamespace": "release",
+          "title": "GitHub Certificate Checks",
+          "description": "Verify attributes on the certificate involved in the image signature when using slsa-github-generator on GitHub Actions with Sigstore Fulcio"
+        },
+        "shortName": "gh_workflow_extensions",
+        "title": "GitHub Workflow Certificate Extensions",
+        "description": "Check if the image signature certificate contains the expected GitHub extensions. These are the extensions that represent the GitHub workflow trigger, sha, name, repository, and ref.",
+        "anchor": "github_certificate__gh_workflow_extensions",
+        "warningOrFailure": "warning",
+        "failureMsg": "Missing extension %q",
+        "collections": [
+          "github"
+        ],
+        "file": "policy/release/github_certificate.rego",
+        "row": 28
+      },
+      {
+        "fullPath": "policy.release.github_certificate.deny",
+        "packagePath": "policy.release.github_certificate",
+        "packageInfo": {
+          "shortName": "github_certificate",
+          "fullName": "policy.release.github_certificate",
+          "shortNamespace": "release",
+          "title": "GitHub Certificate Checks",
+          "description": "Verify attributes on the certificate involved in the image signature when using slsa-github-generator on GitHub Actions with Sigstore Fulcio"
+        },
+        "shortName": "gh_workflow_repository",
+        "title": "GitHub Workflow Repository",
+        "description": "Check if the value of the GitHub Workflow Repository extension in the image signature certificate matches one of the allowed values. Use the rule data key `allowed_gh_workflow_repos` to specify the list of allowed values. An empty allow list, which is the default value, causes this check to succeeded.",
+        "anchor": "github_certificate__gh_workflow_repository",
+        "warningOrFailure": "failure",
+        "failureMsg": "Repository %q not in allowed list: %v",
+        "collections": [
+          "github"
+        ],
+        "file": "policy/release/github_certificate.rego",
+        "row": 47
+      },
+      {
+        "fullPath": "policy.release.github_certificate.deny",
+        "packagePath": "policy.release.github_certificate",
+        "packageInfo": {
+          "shortName": "github_certificate",
+          "fullName": "policy.release.github_certificate",
+          "shortNamespace": "release",
+          "title": "GitHub Certificate Checks",
+          "description": "Verify attributes on the certificate involved in the image signature when using slsa-github-generator on GitHub Actions with Sigstore Fulcio"
+        },
+        "shortName": "gh_workflow_ref",
+        "title": "GitHub Workflow Repository",
+        "description": "Check if the value of the GitHub Workflow Ref extension in the image signature certificate matches one of the allowed values. Use the rule data key `allowed_gh_workflow_refs` to specify the list of allowed values. An empty allow list, which is the default value, causes this check to succeeded.",
+        "anchor": "github_certificate__gh_workflow_ref",
+        "warningOrFailure": "failure",
+        "failureMsg": "Ref %q not in allowed list: %v",
+        "collections": [
+          "github"
+        ],
+        "file": "policy/release/github_certificate.rego",
+        "row": 62
+      },
+      {
+        "fullPath": "policy.release.github_certificate.deny",
+        "packagePath": "policy.release.github_certificate",
+        "packageInfo": {
+          "shortName": "github_certificate",
+          "fullName": "policy.release.github_certificate",
+          "shortNamespace": "release",
+          "title": "GitHub Certificate Checks",
+          "description": "Verify attributes on the certificate involved in the image signature when using slsa-github-generator on GitHub Actions with Sigstore Fulcio"
+        },
+        "shortName": "gh_workflow_name",
+        "title": "GitHub Workflow Name",
+        "description": "Check if the value of the GitHub Workflow Name extension in the image signature certificate matches one of the allowed values. Use the rule data key `allowed_gh_workflow_names` to specify the list of allowed values. An empty allow list, which is the default value, causes this check to succeeded.",
+        "anchor": "github_certificate__gh_workflow_name",
+        "warningOrFailure": "failure",
+        "failureMsg": "Name %q not in allowed list: %v",
+        "collections": [
+          "github"
+        ],
+        "file": "policy/release/github_certificate.rego",
+        "row": 77
+      },
+      {
+        "fullPath": "policy.release.github_certificate.deny",
+        "packagePath": "policy.release.github_certificate",
+        "packageInfo": {
+          "shortName": "github_certificate",
+          "fullName": "policy.release.github_certificate",
+          "shortNamespace": "release",
+          "title": "GitHub Certificate Checks",
+          "description": "Verify attributes on the certificate involved in the image signature when using slsa-github-generator on GitHub Actions with Sigstore Fulcio"
+        },
+        "shortName": "gh_workflow_trigger",
+        "title": "GitHub Workflow Trigger",
+        "description": "Check if the value of the GitHub Workflow Trigger extension in the image signature certificate matches one of the allowed values. Use the rule data key `allowed_gh_workflow_triggers` to specify the list of allowed values. An empty allow list, which is the default value, causes this check to succeeded.",
+        "anchor": "github_certificate__gh_workflow_trigger",
+        "warningOrFailure": "failure",
+        "failureMsg": "Trigger %q not in allowed list: %v",
+        "collections": [
+          "github"
+        ],
+        "file": "policy/release/github_certificate.rego",
+        "row": 92
+      }
+    ],
+    "policy.release.hermetic_build_task": [
+      {
+        "fullPath": "policy.release.hermetic_build_task.deny",
+        "packagePath": "policy.release.hermetic_build_task",
+        "packageInfo": {
+          "shortName": "hermetic_build_task",
+          "fullName": "policy.release.hermetic_build_task",
+          "shortNamespace": "release",
+          "title": "Hermetic build task",
+          "description": "This package verifies the build task in the attestation was invoked with the expected parameters to perform a hermetic build."
+        },
+        "shortName": "build_task_hermetic",
+        "title": "Build task called with hermetic param set",
+        "description": "Verify the build task in the PipelineRun attestation was invoked with the proper parameters to make the build process hermetic.",
+        "solution": "Make sure the task that builds the image has a parameter named 'HERMETIC' and it's set to 'true'.",
+        "anchor": "hermetic_build_task__build_task_hermetic",
+        "warningOrFailure": "failure",
+        "failureMsg": "Build task was not invoked with the hermetic parameter set",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/hermetic_build_task.rego",
+        "row": 33
+      }
+    ],
+    "policy.release.java": [
+      {
+        "fullPath": "policy.release.java.deny",
+        "packagePath": "policy.release.java",
+        "packageInfo": {
+          "shortName": "java",
+          "fullName": "policy.release.java",
+          "shortNamespace": "release",
+          "title": "Java dependency checks",
+          "description": "This package contains a rule to confirm that all Java dependencies were rebuilt in house rather than imported directly from potentially untrusted respositories. If the result is missing no violation is reported."
+        },
+        "shortName": "no_foreign_dependencies",
+        "title": "Java builds have no foreign dependencies",
+        "description": "The SBOM_JAVA_COMPONENTS_COUNT task result finds dependencies that have originated from foreign repositories, i.e. ones that are not rebuilt or provided by Red Hat. Verify there are no dependencies from sources not listed in the `allowed_java_component_sources` rule data.",
+        "solution": "Make sure there are no build dependencies that originate from foreign repositories. The allowed sources are in the rule_data under the key 'allowed_java_component_sources'.",
+        "anchor": "java__no_foreign_dependencies",
+        "warningOrFailure": "failure",
+        "failureMsg": "Found Java dependencies from '%s', expecting to find only from '%s'",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/java.rego",
+        "row": 36
+      },
+      {
+        "fullPath": "policy.release.java.deny",
+        "packagePath": "policy.release.java",
+        "packageInfo": {
+          "shortName": "java",
+          "fullName": "policy.release.java",
+          "shortNamespace": "release",
+          "title": "Java dependency checks",
+          "description": "This package contains a rule to confirm that all Java dependencies were rebuilt in house rather than imported directly from potentially untrusted respositories. If the result is missing no violation is reported."
+        },
+        "shortName": "trusted_dependencies_source_list_provided",
+        "title": "Trusted Java dependency source list was provided",
+        "description": "Confirm the `allowed_java_component_sources` rule data was provided, since it's required by the policy rules in this package.",
+        "solution": "Add a data source that contains allowable source repositories for build dependencies. The source must be located under a key named 'allowed_java_component_sources'. More information on adding xref:ec-cli:ROOT:configuration.adoc#_data_sources[data sources].",
+        "anchor": "java__trusted_dependencies_source_list_provided",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required allowed_java_component_sources rule data",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/java.rego",
+        "row": 60
+      }
+    ],
+    "policy.release.labels": [
+      {
+        "fullPath": "policy.release.labels.deny",
+        "packagePath": "policy.release.labels",
+        "packageInfo": {
+          "shortName": "labels",
+          "fullName": "policy.release.labels",
+          "shortNamespace": "release",
+          "title": "Labels",
+          "description": "Check if the image has the expected labels set. The rules in this package distinguish file-based catalog (FBC) images from all other images. When checking an FBC image, a policy rule may use a different set of rule data. An FBC image is detected by the presence of the operators.operatorframework.io.index.configs.v1 label."
+        },
+        "shortName": "deprecated_labels",
+        "title": "Deprecated labels",
+        "description": "Check the image for the presence of labels that have been deprecated. Use the rule data key `deprecated_labels` to set the list of labels to check.",
+        "solution": "Update the image build process to not set the deprecated labels.",
+        "anchor": "labels__deprecated_labels",
+        "warningOrFailure": "failure",
+        "failureMsg": "The %q label is deprecated, replace with %q",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/labels.rego",
+        "row": 32
+      },
+      {
+        "fullPath": "policy.release.labels.deny",
+        "packagePath": "policy.release.labels",
+        "packageInfo": {
+          "shortName": "labels",
+          "fullName": "policy.release.labels",
+          "shortNamespace": "release",
+          "title": "Labels",
+          "description": "Check if the image has the expected labels set. The rules in this package distinguish file-based catalog (FBC) images from all other images. When checking an FBC image, a policy rule may use a different set of rule data. An FBC image is detected by the presence of the operators.operatorframework.io.index.configs.v1 label."
+        },
+        "shortName": "required_labels",
+        "title": "Required labels",
+        "description": "Check the image for the presence of labels that are required. Use the rule data `required_labels` key to set the list of labels to check, or the `fbc_required_labels` key for fbc images.",
+        "solution": "Update the image build process to set the required labels.",
+        "anchor": "labels__required_labels",
+        "warningOrFailure": "failure",
+        "failureMsg": "The required %q label is missing. Label description: %s",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/labels.rego",
+        "row": 57
+      },
+      {
+        "fullPath": "policy.release.labels.warn",
+        "packagePath": "policy.release.labels",
+        "packageInfo": {
+          "shortName": "labels",
+          "fullName": "policy.release.labels",
+          "shortNamespace": "release",
+          "title": "Labels",
+          "description": "Check if the image has the expected labels set. The rules in this package distinguish file-based catalog (FBC) images from all other images. When checking an FBC image, a policy rule may use a different set of rule data. An FBC image is detected by the presence of the operators.operatorframework.io.index.configs.v1 label."
+        },
+        "shortName": "optional_labels",
+        "title": "Optional labels",
+        "description": "Check the image for the presence of labels that are recommended, but not required. Use the rule data `optional_labels` key to set the list of labels to check, or the `fbc_optional_labels` key for fbc images.",
+        "solution": "Update the image build process to set the optional labels.",
+        "anchor": "labels__optional_labels",
+        "warningOrFailure": "warning",
+        "failureMsg": "The optional %q label is missing. Label description: %s",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/labels.rego",
+        "row": 84
+      },
+      {
+        "fullPath": "policy.release.labels.deny",
+        "packagePath": "policy.release.labels",
+        "packageInfo": {
+          "shortName": "labels",
+          "fullName": "policy.release.labels",
+          "shortNamespace": "release",
+          "title": "Labels",
+          "description": "Check if the image has the expected labels set. The rules in this package distinguish file-based catalog (FBC) images from all other images. When checking an FBC image, a policy rule may use a different set of rule data. An FBC image is detected by the presence of the operators.operatorframework.io.index.configs.v1 label."
+        },
+        "shortName": "disallowed_inherited_labels",
+        "title": "Disallowed inherited labels",
+        "description": "Check that certain labels on the image have different values than the labels from the parent image. If the label is inherited from the parent image but not redefined for the image, it will contain an incorrect value for the image. Use the rule data `disallowed_inherited_labels` key to set the list of labels to check, or the `fbc_disallowed_inherited_labels` key for fbc images.",
+        "solution": "Update the image build process to overwrite the inherited labels.",
+        "anchor": "labels__disallowed_inherited_labels",
+        "warningOrFailure": "failure",
+        "failureMsg": "The %q label should not be inherited from the parent image",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/labels.rego",
+        "row": 112
+      }
+    ],
+    "policy.release.olm": [
+      {
+        "fullPath": "policy.release.olm.deny",
+        "packagePath": "policy.release.olm",
+        "packageInfo": {
+          "shortName": "olm",
+          "fullName": "policy.release.olm",
+          "shortNamespace": "release",
+          "title": "Olm",
+          "description": "Checks for Operator Lifecycle Manager (OLM) bundles."
+        },
+        "shortName": "unpinned_references",
+        "title": "Unpinned images in OLM bundle",
+        "description": "Check the OLM bundle image for the presence of unpinned image references. Unpinned image pull references are references to images found in link:https://osbs.readthedocs.io/en/latest/users.html#pullspec-locations[varying locations] that do not contain a digest -- uniquely identifying the version of the image being pulled.",
+        "solution": "Update the OLM bundle replacing the unpinned image reference with pinned image reference. Pinned image reference contains the image digest.",
+        "anchor": "olm__unpinned_references",
+        "warningOrFailure": "failure",
+        "failureMsg": "The %q image reference is not pinned at %s.",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/olm.rego",
+        "row": 34
+      }
+    ],
+    "policy.release.provenance_materials": [
+      {
+        "fullPath": "policy.release.provenance_materials.deny",
+        "packagePath": "policy.release.provenance_materials",
+        "packageInfo": {
+          "shortName": "provenance_materials",
+          "fullName": "policy.release.provenance_materials",
+          "shortNamespace": "release",
+          "title": "Provenance Materials",
+          "description": "This package provides rules for verifying the contents of the materials section of the SLSA Provenance attestation."
+        },
+        "shortName": "git_clone_task_found",
+        "title": "Git clone task found",
+        "description": "Confirm that the attestation contains a git-clone task with `commit` and `url` task results.",
+        "solution": "Make sure the build pipeline contains a task named 'git-clone'.",
+        "anchor": "provenance_materials__git_clone_task_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "Task git-clone not found",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/provenance_materials.rego",
+        "row": 32
+      },
+      {
+        "fullPath": "policy.release.provenance_materials.deny",
+        "packagePath": "policy.release.provenance_materials",
+        "packageInfo": {
+          "shortName": "provenance_materials",
+          "fullName": "policy.release.provenance_materials",
+          "shortNamespace": "release",
+          "title": "Provenance Materials",
+          "description": "This package provides rules for verifying the contents of the materials section of the SLSA Provenance attestation."
+        },
+        "shortName": "git_clone_source_matches_provenance",
+        "title": "Git clone source matches materials provenance",
+        "description": "Confirm that the result of the git-clone task is included in the materials section of the SLSA provenance attestation.",
+        "solution": "The build pipeline must contain a task named 'git-clone' and that task must emit results named 'url' and 'commit' and contain the clone git repository and commit, respectively.",
+        "anchor": "provenance_materials__git_clone_source_matches_provenance",
+        "warningOrFailure": "failure",
+        "failureMsg": "Entry in materials for the git repo %q and commit %q not found",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/provenance_materials.rego",
+        "row": 56
+      }
+    ],
+    "policy.release.redhat_manifests": [
+      {
+        "fullPath": "policy.release.redhat_manifests.deny",
+        "packagePath": "policy.release.redhat_manifests",
+        "packageInfo": {
+          "shortName": "redhat_manifests",
+          "fullName": "policy.release.redhat_manifests",
+          "shortNamespace": "release",
+          "title": "Red Hat manifests",
+          "description": "Red Hat images are expected to include certain manifest files. This package verifies this requirement is met."
+        },
+        "shortName": "redhat_manifests_missing",
+        "title": "Missing Red Hat manifests",
+        "description": "Verify the expected Red Hat manifests are available in the image.",
+        "anchor": "redhat_manifests__redhat_manifests_missing",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing Red Hat manifest %q",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/redhat_manifests.rego",
+        "row": 25
+      }
+    ],
+    "policy.release.slsa_build_build_service": [
+      {
+        "fullPath": "policy.release.slsa_build_build_service.deny",
+        "packagePath": "policy.release.slsa_build_build_service",
+        "packageInfo": {
+          "shortName": "slsa_build_build_service",
+          "fullName": "policy.release.slsa_build_build_service",
+          "shortNamespace": "release",
+          "title": "SLSA - Build - Build Service",
+          "description": "The SLSA requirement states the following:\n\"All build steps ran using some build service, not on a developer’s workstation.\"\nThis package verifies the requirement by asserting the image was built by Tekton Pipelines."
+        },
+        "shortName": "slsa_builder_id_found",
+        "title": "SLSA Builder ID found",
+        "description": "Verify that the attestation attribute predicate.builder.id is set.",
+        "solution": "The builder id in the attestation is missing. Make sure the build system is setting the build id when generating an attestation.",
+        "anchor": "slsa_build_build_service__slsa_builder_id_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "Builder ID not set in attestation",
+        "collections": [
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_build_build_service.rego",
+        "row": 38
+      },
+      {
+        "fullPath": "policy.release.slsa_build_build_service.deny",
+        "packagePath": "policy.release.slsa_build_build_service",
+        "packageInfo": {
+          "shortName": "slsa_build_build_service",
+          "fullName": "policy.release.slsa_build_build_service",
+          "shortNamespace": "release",
+          "title": "SLSA - Build - Build Service",
+          "description": "The SLSA requirement states the following:\n\"All build steps ran using some build service, not on a developer’s workstation.\"\nThis package verifies the requirement by asserting the image was built by Tekton Pipelines."
+        },
+        "shortName": "slsa_builder_id_accepted",
+        "title": "SLSA Builder ID is known and accepted",
+        "description": "Verify that the attestation attribute predicate.builder.id is set to one of the values in the `allowed_builder_ids` rule data, e.g. \"https://tekton.dev/chains/v2\".",
+        "solution": "Make sure the build id is set to an expected value. The expected values are set in the xref:ec-cli:ROOT:configuration.adoc#_data_sources[data sources].",
+        "anchor": "slsa_build_build_service__slsa_builder_id_accepted",
+        "warningOrFailure": "failure",
+        "failureMsg": "Builder ID %q is unexpected",
+        "collections": [
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_build_build_service.rego",
+        "row": 63
+      }
+    ],
+    "policy.release.slsa_build_scripted_build": [
+      {
+        "fullPath": "policy.release.slsa_build_scripted_build.deny",
+        "packagePath": "policy.release.slsa_build_scripted_build",
+        "packageInfo": {
+          "shortName": "slsa_build_scripted_build",
+          "fullName": "policy.release.slsa_build_scripted_build",
+          "shortNamespace": "release",
+          "title": "SLSA - Build - Scripted Build",
+          "description": "The SLSA requirement states the following:\n\"All build steps were fully defined in some sort of “build script”. The only manual command, if any, was to invoke the build script.\"\nThis package verifies the requirement by asserting the image was built by Tekton Pipelines."
+        },
+        "shortName": "build_script_used",
+        "title": "Build task contains steps",
+        "description": "Verify that the predicate.buildConfig.tasks.steps attribute for the task responsible for building and pushing the image is not empty.",
+        "solution": "There were no build tasks detected. Make sure the build pipeline contains tasks and that the build system is recording them properly when the attestation is generated.",
+        "anchor": "slsa_build_scripted_build__build_script_used",
+        "warningOrFailure": "failure",
+        "failureMsg": "Build task %q does not contain any steps",
+        "collections": [
+          "slsa1",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_build_scripted_build.rego",
+        "row": 43
+      },
+      {
+        "fullPath": "policy.release.slsa_build_scripted_build.deny",
+        "packagePath": "policy.release.slsa_build_scripted_build",
+        "packageInfo": {
+          "shortName": "slsa_build_scripted_build",
+          "fullName": "policy.release.slsa_build_scripted_build",
+          "shortNamespace": "release",
+          "title": "SLSA - Build - Scripted Build",
+          "description": "The SLSA requirement states the following:\n\"All build steps were fully defined in some sort of “build script”. The only manual command, if any, was to invoke the build script.\"\nThis package verifies the requirement by asserting the image was built by Tekton Pipelines."
+        },
+        "shortName": "build_task_image_results_found",
+        "title": "Build task set image digest and url task results",
+        "description": "Confirm that a build task exists and it has the expected IMAGE_DIGEST and IMAGE_URL task results.",
+        "solution": "Make sure the build pipeline contains a build task. The build task must contain results named 'IMAGE_DIGEST' and 'IMAGE_URL'.",
+        "anchor": "slsa_build_scripted_build__build_task_image_results_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "Build task not found",
+        "collections": [
+          "slsa1",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_build_scripted_build.rego",
+        "row": 69
+      },
+      {
+        "fullPath": "policy.release.slsa_build_scripted_build.deny",
+        "packagePath": "policy.release.slsa_build_scripted_build",
+        "packageInfo": {
+          "shortName": "slsa_build_scripted_build",
+          "fullName": "policy.release.slsa_build_scripted_build",
+          "shortNamespace": "release",
+          "title": "SLSA - Build - Scripted Build",
+          "description": "The SLSA requirement states the following:\n\"All build steps were fully defined in some sort of “build script”. The only manual command, if any, was to invoke the build script.\"\nThis package verifies the requirement by asserting the image was built by Tekton Pipelines."
+        },
+        "shortName": "subject_build_task_matches",
+        "title": "Provenance subject matches build task image result",
+        "description": "Verify the subject of the attestations matches the IMAGE_DIGEST and IMAGE_URL values from the build task.",
+        "solution": "Make sure the subject in the attestation matches the 'IMAGE_URL' and 'IMAGE_DIGEST' results from the build task. The format for the subject should be 'IMAGE_URL@IMAGE_DIGEST'.",
+        "anchor": "slsa_build_scripted_build__subject_build_task_matches",
+        "warningOrFailure": "failure",
+        "failureMsg": "The attestation subject, %q, does not match the build task image, %q",
+        "collections": [
+          "slsa1",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_build_scripted_build.rego",
+        "row": 94
+      }
+    ],
+    "policy.release.slsa_provenance_available": [
+      {
+        "fullPath": "policy.release.slsa_provenance_available.deny",
+        "packagePath": "policy.release.slsa_provenance_available",
+        "packageInfo": {
+          "shortName": "slsa_provenance_available",
+          "fullName": "policy.release.slsa_provenance_available",
+          "shortNamespace": "release",
+          "title": "SLSA - Provenance - Available",
+          "description": "The SLSA Provenance Available requirement states the following:\n\"The provenance is available to the consumer in a format that the consumer accepts. The format SHOULD be in-toto SLSA Provenance, but another format MAY be used if both producer and consumer agree and it meets all the other requirements.\"\nThis package only accepts the in-toto SLSA Provenance format."
+        },
+        "shortName": "attestation_predicate_type_accepted",
+        "title": "Expected attestation predicate type found",
+        "description": "Verify that the predicateType field of the attestation indicates the in-toto SLSA Provenance format was used to attest the PipelineRun.",
+        "solution": "The predicate type field in the attestation does not match the 'allowed_predicate_types' field. This field is set in the xref:ec-cli:ROOT:configuration.adoc#_data_sources[data sources].",
+        "anchor": "slsa_provenance_available__attestation_predicate_type_accepted",
+        "warningOrFailure": "failure",
+        "failureMsg": "Attestation predicate type %q is not an expected type (%s)",
+        "collections": [
+          "minimal",
+          "slsa1",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_provenance_available.rego",
+        "row": 41
+      }
+    ],
+    "policy.release.slsa_source_version_controlled": [
+      {
+        "fullPath": "policy.release.slsa_source_version_controlled.deny",
+        "packagePath": "policy.release.slsa_source_version_controlled",
+        "packageInfo": {
+          "shortName": "slsa_source_version_controlled",
+          "fullName": "policy.release.slsa_source_version_controlled",
+          "shortNamespace": "release",
+          "title": "SLSA - Source - Version Controlled",
+          "description": "The SLSA requirement states the following:\n\"Every change to the source is tracked in a version control system that meets the following requirements:\n\n  [Change history] There exists a record of the history of changes\n  that went into the revision. Each change must contain: the\n  identities of the uploader and reviewers (if any), timestamps of\n  the reviews (if any) and submission, the change\n  description/justification, the content of the change, and the\n  parent revisions.\n\n  [Immutable reference] There exists a way to indefinitely reference\n  this particular, immutable revision. In git, this is the {repo URL +\n  branch/tag/ref + commit ID}.\n\nMost popular version control system meet this requirement, such as git, Mercurial, Subversion, or Perforce.\"\nThis package verifies the requirement by asserting the image was built from a git repository."
+        },
+        "shortName": "materials_format_okay",
+        "title": "Materials have uri and digest",
+        "description": "Confirm at least one entry in the predicate.materials array of the attestation contains the expected attributes: uri and digest.sha1.",
+        "solution": "Make sure the attestation contains the repository URI and digest.sha1. This information comes from the 'CHAINS-GIT_URL' and 'CHAINS-GIT_COMMIT' results in the 'git-clone' task.",
+        "anchor": "slsa_source_version_controlled__materials_format_okay",
+        "warningOrFailure": "failure",
+        "failureMsg": "No materials match expected format",
+        "collections": [
+          "minimal",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_source_version_controlled.rego",
+        "row": 54
+      },
+      {
+        "fullPath": "policy.release.slsa_source_version_controlled.deny",
+        "packagePath": "policy.release.slsa_source_version_controlled",
+        "packageInfo": {
+          "shortName": "slsa_source_version_controlled",
+          "fullName": "policy.release.slsa_source_version_controlled",
+          "shortNamespace": "release",
+          "title": "SLSA - Source - Version Controlled",
+          "description": "The SLSA requirement states the following:\n\"Every change to the source is tracked in a version control system that meets the following requirements:\n\n  [Change history] There exists a record of the history of changes\n  that went into the revision. Each change must contain: the\n  identities of the uploader and reviewers (if any), timestamps of\n  the reviews (if any) and submission, the change\n  description/justification, the content of the change, and the\n  parent revisions.\n\n  [Immutable reference] There exists a way to indefinitely reference\n  this particular, immutable revision. In git, this is the {repo URL +\n  branch/tag/ref + commit ID}.\n\nMost popular version control system meet this requirement, such as git, Mercurial, Subversion, or Perforce.\"\nThis package verifies the requirement by asserting the image was built from a git repository."
+        },
+        "shortName": "materials_uri_is_git_repo",
+        "title": "Material uri is a git repo",
+        "description": "Ensure each entry in the predicate.materials array of the attestation uses a git URI.",
+        "solution": "Make sure the format of the URI in the materials section of the attestation is a valid URI. This information comes from the 'CHAINS-GIT_URL' result of the 'git-clone' task.",
+        "anchor": "slsa_source_version_controlled__materials_uri_is_git_repo",
+        "warningOrFailure": "failure",
+        "failureMsg": "Material URI %q is not a git URI",
+        "collections": [
+          "minimal",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_source_version_controlled.rego",
+        "row": 80
+      },
+      {
+        "fullPath": "policy.release.slsa_source_version_controlled.deny",
+        "packagePath": "policy.release.slsa_source_version_controlled",
+        "packageInfo": {
+          "shortName": "slsa_source_version_controlled",
+          "fullName": "policy.release.slsa_source_version_controlled",
+          "shortNamespace": "release",
+          "title": "SLSA - Source - Version Controlled",
+          "description": "The SLSA requirement states the following:\n\"Every change to the source is tracked in a version control system that meets the following requirements:\n\n  [Change history] There exists a record of the history of changes\n  that went into the revision. Each change must contain: the\n  identities of the uploader and reviewers (if any), timestamps of\n  the reviews (if any) and submission, the change\n  description/justification, the content of the change, and the\n  parent revisions.\n\n  [Immutable reference] There exists a way to indefinitely reference\n  this particular, immutable revision. In git, this is the {repo URL +\n  branch/tag/ref + commit ID}.\n\nMost popular version control system meet this requirement, such as git, Mercurial, Subversion, or Perforce.\"\nThis package verifies the requirement by asserting the image was built from a git repository."
+        },
+        "shortName": "materials_include_git_sha",
+        "title": "Materials include git commit shas",
+        "description": "Ensure each entry in the predicate.materials array of the attestation includes a SHA1 digest which corresponds to a git commit.",
+        "solution": "Make sure the format of the digest.sha1 in the materials section of the attestation is a valid commit sha. This information comes from the 'CHAINS-GIT_COMMIT' result of the 'git-clone' task.",
+        "anchor": "slsa_source_version_controlled__materials_include_git_sha",
+        "warningOrFailure": "failure",
+        "failureMsg": "Material digest %q is not a git commit sha",
+        "collections": [
+          "minimal",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_source_version_controlled.rego",
+        "row": 106
+      }
+    ],
+    "policy.release.slsa_source_correlated": [
+      {
+        "fullPath": "policy.release.slsa_source_correlated.warn",
+        "packagePath": "policy.release.slsa_source_correlated",
+        "packageInfo": {
+          "shortName": "slsa_source_correlated",
+          "fullName": "policy.release.slsa_source_correlated",
+          "shortNamespace": "release",
+          "title": "SLSA - Verification model - Source",
+          "description": "SLSA v1 verification model states:\n\"...artifacts are verified to ensure they meet the producer defined expectations of where the package source code was retrieved from...\"\nThis package correlates the provided source code reference with the source code referenced in the attestation."
+        },
+        "shortName": "source_code_reference_provided",
+        "title": "Source code reference provided",
+        "description": "Warn if the expected source code reference is not provided.",
+        "solution": "Provide the expected source code reference in inputs.",
+        "anchor": "slsa_source_correlated__source_code_reference_provided",
+        "warningOrFailure": "warning",
+        "failureMsg": "Expected source code reference was not provided for verification",
+        "collections": [
+          "minimal",
+          "slsa1",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_source_correlated.rego",
+        "row": 40
+      },
+      {
+        "fullPath": "policy.release.slsa_source_correlated.deny",
+        "packagePath": "policy.release.slsa_source_correlated",
+        "packageInfo": {
+          "shortName": "slsa_source_correlated",
+          "fullName": "policy.release.slsa_source_correlated",
+          "shortNamespace": "release",
+          "title": "SLSA - Verification model - Source",
+          "description": "SLSA v1 verification model states:\n\"...artifacts are verified to ensure they meet the producer defined expectations of where the package source code was retrieved from...\"\nThis package correlates the provided source code reference with the source code referenced in the attestation."
+        },
+        "shortName": "attested_source_code_reference",
+        "title": "Source reference",
+        "description": "Attestation contains source reference.",
+        "solution": "Check that the attestation creation process includes the source code reference in the predicate.materials for SLSA Provenance v0.2, or in predicate.buildDefinition.resolvedDependencies for SLSA Provenance v1.0 attestations. Check that the Version Control System prefix is the list of the supported VCS types in rule data (`supported_vcs` key).",
+        "anchor": "slsa_source_correlated__attested_source_code_reference",
+        "warningOrFailure": "failure",
+        "failureMsg": "The attested material contains no source code reference",
+        "collections": [
+          "minimal",
+          "slsa1",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_source_correlated.rego",
+        "row": 69
+      },
+      {
+        "fullPath": "policy.release.slsa_source_correlated.deny",
+        "packagePath": "policy.release.slsa_source_correlated",
+        "packageInfo": {
+          "shortName": "slsa_source_correlated",
+          "fullName": "policy.release.slsa_source_correlated",
+          "shortNamespace": "release",
+          "title": "SLSA - Verification model - Source",
+          "description": "SLSA v1 verification model states:\n\"...artifacts are verified to ensure they meet the producer defined expectations of where the package source code was retrieved from...\"\nThis package correlates the provided source code reference with the source code referenced in the attestation."
+        },
+        "shortName": "expected_source_code_reference",
+        "title": "Expected source code reference",
+        "description": "Verify that the provided source code reference is the one being attested.",
+        "solution": "The source code reference in the attestation doesn't match the expected and provided source code reference. Make sure that the provided source code reference is correct, and if it is make sure that the build process is configured to retrieve the source code from the appropriate source code repository. Make sure that the source code reference is pointing to a explicit revision not to a symbolic identifier, e.g. a branch or tag name.",
+        "anchor": "slsa_source_correlated__expected_source_code_reference",
+        "warningOrFailure": "failure",
+        "failureMsg": "The expected source code reference %q is not attested",
+        "collections": [
+          "minimal",
+          "slsa1",
+          "slsa2",
+          "slsa3",
+          "redhat"
+        ],
+        "file": "policy/release/slsa_source_correlated.rego",
+        "row": 97
+      }
+    ],
+    "policy.release.sbom_spdx": [
+      {
+        "fullPath": "policy.release.sbom_spdx.deny",
+        "packagePath": "policy.release.sbom_spdx",
+        "packageInfo": {
+          "shortName": "sbom_spdx",
+          "fullName": "policy.release.sbom_spdx",
+          "shortNamespace": "release",
+          "title": "Sbom spdx",
+          "description": "Checks different properties of the SPDX SBOM attestation."
+        },
+        "shortName": "found",
+        "title": "Found",
+        "description": "Confirm an SPDX SBOM attestation exists.",
+        "solution": "Make sure the build process produces an SPDX SBOM attestation.",
+        "anchor": "sbom_spdx__found",
+        "warningOrFailure": "failure",
+        "failureMsg": "No SPDX SBOM attestations found",
+        "file": "policy/release/sbom_spdx.rego",
+        "row": 24
+      },
+      {
+        "fullPath": "policy.release.sbom_spdx.deny",
+        "packagePath": "policy.release.sbom_spdx",
+        "packageInfo": {
+          "shortName": "sbom_spdx",
+          "fullName": "policy.release.sbom_spdx",
+          "shortNamespace": "release",
+          "title": "Sbom spdx",
+          "description": "Checks different properties of the SPDX SBOM attestation."
+        },
+        "shortName": "valid",
+        "title": "Valid",
+        "description": "Check the SPDX SBOM has the expected format.",
+        "solution": "Make sure the build process produces a valid SPDX SBOM.",
+        "anchor": "sbom_spdx__valid",
+        "warningOrFailure": "failure",
+        "failureMsg": "SPDX SBOM at index %d is not valid",
+        "file": "policy/release/sbom_spdx.rego",
+        "row": 37
+      },
+      {
+        "fullPath": "policy.release.sbom_spdx.deny",
+        "packagePath": "policy.release.sbom_spdx",
+        "packageInfo": {
+          "shortName": "sbom_spdx",
+          "fullName": "policy.release.sbom_spdx",
+          "shortNamespace": "release",
+          "title": "Sbom spdx",
+          "description": "Checks different properties of the SPDX SBOM attestation."
+        },
+        "shortName": "contains_packages",
+        "title": "Contains packages",
+        "description": "Check the list of packages in the SPDX SBOM is not empty.",
+        "solution": "Verify the SBOM is correctly identifying the package in the image.",
+        "anchor": "sbom_spdx__contains_packages",
+        "warningOrFailure": "failure",
+        "failureMsg": "The list of packages is empty",
+        "file": "policy/release/sbom_spdx.rego",
+        "row": 54
+      },
+      {
+        "fullPath": "policy.release.sbom_spdx.deny",
+        "packagePath": "policy.release.sbom_spdx",
+        "packageInfo": {
+          "shortName": "sbom_spdx",
+          "fullName": "policy.release.sbom_spdx",
+          "shortNamespace": "release",
+          "title": "Sbom spdx",
+          "description": "Checks different properties of the SPDX SBOM attestation."
+        },
+        "shortName": "contains_files",
+        "title": "Contains files",
+        "description": "Check the list of files in the SPDX SBOM is not empty.",
+        "solution": "Verify the SBOM is correctly identifying the files in the image.",
+        "anchor": "sbom_spdx__contains_files",
+        "warningOrFailure": "failure",
+        "failureMsg": "The list of files is empty",
+        "file": "policy/release/sbom_spdx.rego",
+        "row": 69
+      },
+      {
+        "fullPath": "policy.release.sbom_spdx.deny",
+        "packagePath": "policy.release.sbom_spdx",
+        "packageInfo": {
+          "shortName": "sbom_spdx",
+          "fullName": "policy.release.sbom_spdx",
+          "shortNamespace": "release",
+          "title": "Sbom spdx",
+          "description": "Checks different properties of the SPDX SBOM attestation."
+        },
+        "shortName": "matches_image",
+        "title": "Matches image",
+        "description": "Check the SPDX SBOM targets the image being validated.",
+        "solution": "The SPDX SBOM associated with the image describes a different image. Verify the integrity of the build system.",
+        "anchor": "sbom_spdx__matches_image",
+        "warningOrFailure": "failure",
+        "failureMsg": "Image digest in the SBOM, %q, is not as expected, %q",
+        "file": "policy/release/sbom_spdx.rego",
+        "row": 85
+      }
+    ],
+    "policy.release.schedule": [
+      {
+        "fullPath": "policy.release.schedule.deny",
+        "packagePath": "policy.release.schedule",
+        "packageInfo": {
+          "shortName": "schedule",
+          "fullName": "policy.release.schedule",
+          "shortNamespace": "release",
+          "title": "Schedule related checks",
+          "description": "Rules that verify the current date conform to a given schedule."
+        },
+        "shortName": "weekday_restriction",
+        "title": "Weekday Restriction",
+        "description": "Check if the current weekday is allowed based on the rule data value from the key `disallowed_weekdays`. By default, the list is empty in which case *any* weekday is allowed.",
+        "solution": "Try again on a different weekday.",
+        "anchor": "schedule__weekday_restriction",
+        "warningOrFailure": "failure",
+        "failureMsg": "%s is a disallowed weekday: %s",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/schedule.rego",
+        "row": 27
+      },
+      {
+        "fullPath": "policy.release.schedule.deny",
+        "packagePath": "policy.release.schedule",
+        "packageInfo": {
+          "shortName": "schedule",
+          "fullName": "policy.release.schedule",
+          "shortNamespace": "release",
+          "title": "Schedule related checks",
+          "description": "Rules that verify the current date conform to a given schedule."
+        },
+        "shortName": "date_restriction",
+        "title": "Date Restriction",
+        "description": "Check if the current date is not allowed based on the rule data value from the key `disallowed_dates`. By default, the list is empty in which case *any* day is allowed.",
+        "solution": "Try again on a different day.",
+        "anchor": "schedule__date_restriction",
+        "warningOrFailure": "failure",
+        "failureMsg": "%s is a disallowed date: %s",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/schedule.rego",
+        "row": 48
+      }
+    ],
+    "policy.release.step_image_registries": [
+      {
+        "fullPath": "policy.release.step_image_registries.deny",
+        "packagePath": "policy.release.step_image_registries",
+        "packageInfo": {
+          "shortName": "step_image_registries",
+          "fullName": "policy.release.step_image_registries",
+          "shortNamespace": "release",
+          "title": "Step image registries",
+          "description": "This package contains a rule to ensure that each task in the image's build pipeline ran using a container image from a known and presumably trusted source."
+        },
+        "shortName": "task_step_images_permitted",
+        "title": "Task steps ran on permitted container images",
+        "description": "Confirm that each step in each TaskRun ran on a container image with a url that matches one of the prefixes in the provided list of allowed step image registry prefixes.",
+        "solution": "Make sure the container image used in each step of the build pipeline comes from an approved registry. The approved list is under 'allowed_step_image_registry_prefixes' in the xref:ec-cli:ROOT:configuration.adoc#_data_sources[data sources].",
+        "anchor": "step_image_registries__task_step_images_permitted",
+        "warningOrFailure": "failure",
+        "failureMsg": "Step %d in task '%s' has disallowed image ref '%s'",
+        "file": "policy/release/step_image_registries.rego",
+        "row": 33
+      },
+      {
+        "fullPath": "policy.release.step_image_registries.deny",
+        "packagePath": "policy.release.step_image_registries",
+        "packageInfo": {
+          "shortName": "step_image_registries",
+          "fullName": "policy.release.step_image_registries",
+          "shortNamespace": "release",
+          "title": "Step image registries",
+          "description": "This package contains a rule to ensure that each task in the image's build pipeline ran using a container image from a known and presumably trusted source."
+        },
+        "shortName": "step_image_registry_prefix_list_provided",
+        "title": "Permitted step image registry prefix list provided",
+        "description": "Confirm the `allowed_step_image_registry_prefixes` rule data was provided, since it's required by the policy rules in this package.",
+        "solution": "Make sure the xref:ec-cli:ROOT:configuration.adoc#_data_sources[data sources] contains a key 'allowed_step_image_registry_prefixes' that contains a list of approved registries that can be used to run tasks in the build pipeline.",
+        "anchor": "step_image_registries__step_image_registry_prefix_list_provided",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required allowed_step_image_registry_prefixes rule data",
+        "file": "policy/release/step_image_registries.rego",
+        "row": 55
+      }
+    ],
+    "policy.release.attestation_task_bundle": [
+      {
+        "fullPath": "policy.release.attestation_task_bundle.deny",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "shortNamespace": "release",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happened during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks that built the image were defined in task bundles, and that the task bundles used are from the list of known and trusted bundles."
+        },
+        "shortName": "tasks_defined_in_bundle",
+        "title": "Tasks defined using bundle references",
+        "description": "Check for the existence of a task bundle. This rule will fail if the task is not called from a bundle.",
+        "anchor": "attestation_task_bundle__tasks_defined_in_bundle",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' does not contain a bundle reference",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 37
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.deny",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "shortNamespace": "release",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happened during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks that built the image were defined in task bundles, and that the task bundles used are from the list of known and trusted bundles."
+        },
+        "shortName": "task_ref_bundles_not_empty",
+        "title": "Task bundle references not empty",
+        "description": "Check that a valid task bundle reference is being used.",
+        "solution": "Specify a task bundle with a reference as the full digest.",
+        "anchor": "attestation_task_bundle__task_ref_bundles_not_empty",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' uses an empty bundle image reference",
+        "collections": [
+          "minimal",
+          "redhat"
+        ],
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 57
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.warn",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "shortNamespace": "release",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happened during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks that built the image were defined in task bundles, and that the task bundles used are from the list of known and trusted bundles."
+        },
+        "shortName": "task_ref_bundles_pinned",
+        "title": "Task bundle references pinned to digest",
+        "description": "Check if the Tekton Bundle used for the Tasks in the Pipeline definition is pinned to a digest.",
+        "solution": "Specify the task bundle reference with a full digest rather than a tag.",
+        "anchor": "attestation_task_bundle__task_ref_bundles_pinned",
+        "warningOrFailure": "warning",
+        "failureMsg": "Pipeline task '%s' uses an unpinned task bundle reference '%s'",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 77
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.warn",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "shortNamespace": "release",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happened during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks that built the image were defined in task bundles, and that the task bundles used are from the list of known and trusted bundles."
+        },
+        "shortName": "task_ref_bundles_current",
+        "title": "Task bundles are latest versions",
+        "description": "For each Task in the SLSA Provenance attestation, check if the Tekton Bundle used is the most recent xref:acceptable_bundles.adoc#_task_bundles[acceptable bundle].",
+        "solution": "A task bundle used is not the most recent. The most recent task bundles are defined as in xref:acceptable_bundles.adoc#_task_bundles[acceptable bundles] list.",
+        "anchor": "attestation_task_bundle__task_ref_bundles_current",
+        "warningOrFailure": "warning",
+        "failureMsg": "Pipeline task '%s' uses an out of date task bundle '%s'",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 98
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.deny",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "shortNamespace": "release",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happened during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks that built the image were defined in task bundles, and that the task bundles used are from the list of known and trusted bundles."
+        },
+        "shortName": "task_ref_bundles_acceptable",
+        "title": "Task bundles are in acceptable bundles list",
+        "description": "For each Task in the SLSA Provenance attestation, check if the Tekton Bundle used is an xref:acceptable_bundles.adoc#_task_bundles[acceptable bundle] given the tracked effective_on date.",
+        "solution": "For each Task in the SLSA Provenance attestation, check if the Tekton Bundle used is an xref:acceptable_bundles.adoc#_task_bundles[acceptable bundle].",
+        "anchor": "attestation_task_bundle__task_ref_bundles_acceptable",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' uses an unacceptable task bundle '%s'",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 120
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.deny",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "shortNamespace": "release",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happened during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks that built the image were defined in task bundles, and that the task bundles used are from the list of known and trusted bundles."
+        },
+        "shortName": "acceptable_bundles_provided",
+        "title": "An acceptable Tekton bundles list was provided",
+        "description": "Confirm the `task-bundles` rule data was provided, since it's required by the policy rules in this package.",
+        "solution": "Create an acceptable bundles list. This is a list of task bundles with a top-level key of 'task-bundles'. More information can be found at xref:acceptable_bundles.adoc#_task_bundles[acceptable bundles].",
+        "anchor": "attestation_task_bundle__acceptable_bundles_provided",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required task-bundles data",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 140
+      }
+    ],
+    "policy.release.tasks": [
+      {
+        "fullPath": "policy.release.tasks.deny",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "shortNamespace": "release",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included in the pipeline build for each image to be released. This package includes a set of rules to verify that the expected tasks ran in the pipeline when the image was built. Required tasks are listed by the names given to them within the Tekton Bundle image. Optionally invocation parameter of a Task can be also mandated by including the name and the value in square brackets following the name of the task. For example: ``name[PARAM=val]``. Only single parameter is supported, to assert multiple parameters repeat the required task definition for each parameter seperately."
+        },
+        "shortName": "pipeline_has_tasks",
+        "title": "Pipeline run includes at least one task",
+        "description": "Ensure that at least one Task is present in the PipelineRun attestation.",
+        "solution": "Make sure the build pipeline ran any tasks and that the build system is generating a proper attestation.",
+        "anchor": "tasks__pipeline_has_tasks",
+        "warningOrFailure": "failure",
+        "failureMsg": "No tasks found in PipelineRun attestation",
+        "collections": [
+          "minimal",
+          "redhat",
+          "slsa3"
+        ],
+        "file": "policy/release/tasks.rego",
+        "row": 42
+      },
+      {
+        "fullPath": "policy.release.tasks.deny",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "shortNamespace": "release",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included in the pipeline build for each image to be released. This package includes a set of rules to verify that the expected tasks ran in the pipeline when the image was built. Required tasks are listed by the names given to them within the Tekton Bundle image. Optionally invocation parameter of a Task can be also mandated by including the name and the value in square brackets following the name of the task. For example: ``name[PARAM=val]``. Only single parameter is supported, to assert multiple parameters repeat the required task definition for each parameter seperately."
+        },
+        "shortName": "successful_pipeline_tasks",
+        "title": "Successful pipeline tasks",
+        "description": "Ensure that all of the Tasks in the Pipeline completed successfully. Note that skipped Tasks are not taken into account and do not influence the outcome.",
+        "solution": "Make sure the build pipeline is properly configured so all the tasks can be executed successfully.",
+        "anchor": "tasks__successful_pipeline_tasks",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task %q did not complete successfully, %q",
+        "collections": [
+          "minimal",
+          "redhat",
+          "slsa3"
+        ],
+        "file": "policy/release/tasks.rego",
+        "row": 66
+      },
+      {
+        "fullPath": "policy.release.tasks.deny",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "shortNamespace": "release",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included in the pipeline build for each image to be released. This package includes a set of rules to verify that the expected tasks ran in the pipeline when the image was built. Required tasks are listed by the names given to them within the Tekton Bundle image. Optionally invocation parameter of a Task can be also mandated by including the name and the value in square brackets following the name of the task. For example: ``name[PARAM=val]``. Only single parameter is supported, to assert multiple parameters repeat the required task definition for each parameter seperately."
+        },
+        "shortName": "required_tasks_found",
+        "title": "All required tasks were included in the pipeline",
+        "description": "Ensure that the set of required tasks are included in the PipelineRun attestation.",
+        "solution": "Make sure all required tasks are in the build pipeline. The required task list is contained as xref:ec-cli:ROOT:configuration.adoc#_data_sources[data] under the key 'required-tasks'.",
+        "anchor": "tasks__required_tasks_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "%s is missing",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/tasks.rego",
+        "row": 90
+      },
+      {
+        "fullPath": "policy.release.tasks.warn",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "shortNamespace": "release",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included in the pipeline build for each image to be released. This package includes a set of rules to verify that the expected tasks ran in the pipeline when the image was built. Required tasks are listed by the names given to them within the Tekton Bundle image. Optionally invocation parameter of a Task can be also mandated by including the name and the value in square brackets following the name of the task. For example: ``name[PARAM=val]``. Only single parameter is supported, to assert multiple parameters repeat the required task definition for each parameter seperately."
+        },
+        "shortName": "pipeline_required_tasks_list_provided",
+        "title": "Required tasks list for pipeline was provided",
+        "description": "Produce a warning if the required tasks list rule data was not provided.",
+        "solution": "The required task list is contained as xref:ec-cli:ROOT:configuration.adoc#_data_sources[data] under the key 'required-tasks'. Make sure this list exists.",
+        "anchor": "tasks__pipeline_required_tasks_list_provided",
+        "warningOrFailure": "warning",
+        "failureMsg": "Required tasks do not exist for pipeline",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/tasks.rego",
+        "row": 113
+      },
+      {
+        "fullPath": "policy.release.tasks.warn",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "shortNamespace": "release",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included in the pipeline build for each image to be released. This package includes a set of rules to verify that the expected tasks ran in the pipeline when the image was built. Required tasks are listed by the names given to them within the Tekton Bundle image. Optionally invocation parameter of a Task can be also mandated by including the name and the value in square brackets following the name of the task. For example: ``name[PARAM=val]``. Only single parameter is supported, to assert multiple parameters repeat the required task definition for each parameter seperately."
+        },
+        "shortName": "future_required_tasks_found",
+        "title": "Future required tasks were found",
+        "description": "Produce a warning when a task that will be required in the future was not included in the PipelineRun attestation.",
+        "solution": "There is a task that will be required at a future date that is missing from the build pipeline.",
+        "anchor": "tasks__future_required_tasks_found",
+        "warningOrFailure": "warning",
+        "failureMsg": "%s is missing and will be required in the future",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/tasks.rego",
+        "row": 134
+      },
+      {
+        "fullPath": "policy.release.tasks.deny",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "shortNamespace": "release",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included in the pipeline build for each image to be released. This package includes a set of rules to verify that the expected tasks ran in the pipeline when the image was built. Required tasks are listed by the names given to them within the Tekton Bundle image. Optionally invocation parameter of a Task can be also mandated by including the name and the value in square brackets following the name of the task. For example: ``name[PARAM=val]``. Only single parameter is supported, to assert multiple parameters repeat the required task definition for each parameter seperately."
+        },
+        "shortName": "required_tasks_list_provided",
+        "title": "Required tasks list was provided",
+        "description": "Confirm the `required-tasks` rule data was provided, since it's required by the policy rules in this package.",
+        "solution": "Make sure the xref:ec-cli:ROOT:configuration.adoc#_data_sources[data sources] contains a key 'required-tasks' that contains a list of tasks that are required to run in the build pipeline.",
+        "anchor": "tasks__required_tasks_list_provided",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required task-bundles data",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/tasks.rego",
+        "row": 160
+      }
+    ],
+    "policy.release.test": [
+      {
+        "fullPath": "policy.release.test.deny",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "shortNamespace": "release",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected to a set of tests and that those tests all passed. This package includes a set of rules to verify that."
+        },
+        "shortName": "test_data_found",
+        "title": "Test data found in task results",
+        "description": "Ensure that at least one of the tasks in the pipeline includes a TEST_OUTPUT task result, which is where Enterprise Contract expects to find test result data.",
+        "solution": "Confirm at least one task in the build pipeline contains a result named TEST_OUTPUT.",
+        "anchor": "test__test_data_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "No test data found",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/test.rego",
+        "row": 31
+      },
+      {
+        "fullPath": "policy.release.test.deny",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "shortNamespace": "release",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected to a set of tests and that those tests all passed. This package includes a set of rules to verify that."
+        },
+        "shortName": "test_results_found",
+        "title": "Test data includes results key",
+        "description": "Each test result is expected to have a `results` key. Verify that the `results` key is present in all of the TEST_OUTPUT task results.",
+        "solution": "There was at least one result named TEST_OUTPUT found, but it did not contain a key named 'result'. For a TEST_OUTPUT result to be valid, this key must exist.",
+        "anchor": "test__test_results_found",
+        "warningOrFailure": "failure",
+        "failureMsg": "Found tests without results",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/test.rego",
+        "row": 55
+      },
+      {
+        "fullPath": "policy.release.test.deny",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "shortNamespace": "release",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected to a set of tests and that those tests all passed. This package includes a set of rules to verify that."
+        },
+        "shortName": "test_results_known",
+        "title": "No unsupported test result values found",
+        "description": "Ensure all test data result values are in the set of known/supported result values.",
+        "solution": "The test results should be of a known value. Values can be set as a xref:ec-cli:ROOT:configuration.adoc#_data_sources[data source].",
+        "anchor": "test__test_results_known",
+        "warningOrFailure": "failure",
+        "failureMsg": "Test '%s' has unsupported result '%s'",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/test.rego",
+        "row": 76
+      },
+      {
+        "fullPath": "policy.release.test.deny",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "shortNamespace": "release",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected to a set of tests and that those tests all passed. This package includes a set of rules to verify that."
+        },
+        "shortName": "required_tests_passed",
+        "title": "All required tests passed",
+        "description": "Confirm that all the tests in the test results have a successful result. A successful result is one that isn't a \"FAILURE\" or \"ERROR\". This will fail if any of the tests failed and the failure message will list the names of the failing tests.",
+        "solution": "There is a required test that did not pass. Make sure that any task in the build pipeline with a result named 'TEST_OUTPUT' passes.",
+        "anchor": "test__required_tests_passed",
+        "warningOrFailure": "failure",
+        "failureMsg": "Test %q did not complete successfully",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/test.rego",
+        "row": 111
+      },
+      {
+        "fullPath": "policy.release.test.warn",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "shortNamespace": "release",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected to a set of tests and that those tests all passed. This package includes a set of rules to verify that."
+        },
+        "shortName": "no_skipped_tests",
+        "title": "No tests were skipped",
+        "description": "Produce a warning if any tests have their result set to \"SKIPPED\".",
+        "solution": "There is a test that was skipped. Make sure that each task with a result named 'TEST_OUTPUT' was not skipped. You can find which test was skipped by examining the 'result' key in the 'TEST_OUTPUT'.",
+        "anchor": "test__no_skipped_tests",
+        "warningOrFailure": "warning",
+        "failureMsg": "Test %q was skipped",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/test.rego",
+        "row": 132
+      },
+      {
+        "fullPath": "policy.release.test.warn",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "shortNamespace": "release",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected to a set of tests and that those tests all passed. This package includes a set of rules to verify that."
+        },
+        "shortName": "no_test_warnings",
+        "title": "No tests produced warnings",
+        "description": "Produce a warning if any tests have their result set to \"WARNING\".",
+        "solution": "There is a task with result 'TEST_OUTPUT' that returned a result of 'WARNING'. You can find which test resulted in 'WARNING' by examining the 'result' key in the 'TEST_OUTPUT'.",
+        "anchor": "test__no_test_warnings",
+        "warningOrFailure": "warning",
+        "failureMsg": "Test %q returned a warning",
+        "collections": [
+          "redhat"
+        ],
+        "file": "policy/release/test.rego",
+        "row": 153
+      }
+    ]
+  },
+  "releaseCollections": [
+    {
+      "title": "builtin",
+      "description": "Includes a set of always on builtin policies. Note that builtin policies are always included and cannot be skipped regardless of your policy configuration.",
+      "rules": [
+        {
+          "anchor": "builtin_attestation__signature_check",
+          "title": "Attestation signature",
+          "pkgTitle": "Builtin attestation policies",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "builtin_attestation__syntax_check",
+          "title": "Attestation syntax",
+          "pkgTitle": "Builtin attestation policies",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "builtin_image__signature_check",
+          "title": "Image signature",
+          "pkgTitle": "Builtin image policies",
+          "pkgNamespace": "release"
+        }
+      ]
+    },
+    {
+      "title": "github",
+      "description": "A set of policy rules to validate artifacts built on GitHub.",
+      "rules": [
+        {
+          "anchor": "github_certificate__gh_workflow_repository",
+          "title": "GitHub Workflow Repository",
+          "pkgTitle": "GitHub Certificate Checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "github_certificate__gh_workflow_ref",
+          "title": "GitHub Workflow Repository",
+          "pkgTitle": "GitHub Certificate Checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "github_certificate__gh_workflow_name",
+          "title": "GitHub Workflow Name",
+          "pkgTitle": "GitHub Certificate Checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "github_certificate__gh_workflow_trigger",
+          "title": "GitHub Workflow Trigger",
+          "pkgTitle": "GitHub Certificate Checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "github_certificate__gh_workflow_extensions",
+          "title": "GitHub Workflow Certificate Extensions",
+          "pkgTitle": "GitHub Certificate Checks",
+          "pkgNamespace": "release"
+        }
+      ]
+    },
+    {
+      "title": "minimal",
+      "description": "Includes a minimal set of policy rules to ensure the build pipeline is functioning as expected, and able to produce signed attestations of the expected type.",
+      "rules": [
+        {
+          "anchor": "attestation_task_bundle__tasks_defined_in_bundle",
+          "title": "Tasks defined using bundle references",
+          "pkgTitle": "Task bundle checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_task_bundle__task_ref_bundles_not_empty",
+          "title": "Task bundle references not empty",
+          "pkgTitle": "Task bundle checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_type__known_attestation_type",
+          "title": "Known attestation type found",
+          "pkgTitle": "Attestation type",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_type__pipelinerun_attestation_found",
+          "title": "PipelineRun attestation found",
+          "pkgTitle": "Attestation type",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_type__deprecated_policy_attestation_format",
+          "title": "Deprecated policy attestation format",
+          "pkgTitle": "Attestation type",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "base_image_registries__base_image_permitted",
+          "title": "Base image comes from permitted registry",
+          "pkgTitle": "Base image checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "base_image_registries__base_image_info_found",
+          "title": "Base image task result was provided",
+          "pkgTitle": "Base image checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "base_image_registries__allowed_registries_provided",
+          "title": "Allowed base image registry prefixes list was provided",
+          "pkgTitle": "Base image checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "cve__cve_blockers",
+          "title": "Blocking CVE check",
+          "pkgTitle": "CVE checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "cve__cve_results_found",
+          "title": "CVE scan results found",
+          "pkgTitle": "CVE checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "cve__cve_warnings",
+          "title": "Non-blocking CVE check",
+          "pkgTitle": "CVE checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "provenance_materials__git_clone_task_found",
+          "title": "Git clone task found",
+          "pkgTitle": "Provenance Materials",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "provenance_materials__git_clone_source_matches_provenance",
+          "title": "Git clone source matches materials provenance",
+          "pkgTitle": "Provenance Materials",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_provenance_available__attestation_predicate_type_accepted",
+          "title": "Expected attestation predicate type found",
+          "pkgTitle": "SLSA - Provenance - Available",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__attested_source_code_reference",
+          "title": "Source reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__expected_source_code_reference",
+          "title": "Expected source code reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__source_code_reference_provided",
+          "title": "Source code reference provided",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_format_okay",
+          "title": "Materials have uri and digest",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_uri_is_git_repo",
+          "title": "Material uri is a git repo",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_include_git_sha",
+          "title": "Materials include git commit shas",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__pipeline_has_tasks",
+          "title": "Pipeline run includes at least one task",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__successful_pipeline_tasks",
+          "title": "Successful pipeline tasks",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        }
+      ]
+    },
+    {
+      "title": "redhat",
+      "description": "Include the set of policy rules required for Red Hat products.",
+      "rules": [
+        {
+          "anchor": "attestation_task_bundle__tasks_defined_in_bundle",
+          "title": "Tasks defined using bundle references",
+          "pkgTitle": "Task bundle checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_task_bundle__task_ref_bundles_not_empty",
+          "title": "Task bundle references not empty",
+          "pkgTitle": "Task bundle checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_task_bundle__task_ref_bundles_acceptable",
+          "title": "Task bundles are in acceptable bundles list",
+          "pkgTitle": "Task bundle checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_task_bundle__acceptable_bundles_provided",
+          "title": "An acceptable Tekton bundles list was provided",
+          "pkgTitle": "Task bundle checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_task_bundle__task_ref_bundles_pinned",
+          "title": "Task bundle references pinned to digest",
+          "pkgTitle": "Task bundle checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_task_bundle__task_ref_bundles_current",
+          "title": "Task bundles are latest versions",
+          "pkgTitle": "Task bundle checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_type__known_attestation_type",
+          "title": "Known attestation type found",
+          "pkgTitle": "Attestation type",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_type__pipelinerun_attestation_found",
+          "title": "PipelineRun attestation found",
+          "pkgTitle": "Attestation type",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "attestation_type__deprecated_policy_attestation_format",
+          "title": "Deprecated policy attestation format",
+          "pkgTitle": "Attestation type",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "base_image_registries__base_image_permitted",
+          "title": "Base image comes from permitted registry",
+          "pkgTitle": "Base image checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "base_image_registries__base_image_info_found",
+          "title": "Base image task result was provided",
+          "pkgTitle": "Base image checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "base_image_registries__allowed_registries_provided",
+          "title": "Allowed base image registry prefixes list was provided",
+          "pkgTitle": "Base image checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "buildah_build_task__buildah_task_has_dockerfile_param",
+          "title": "Buildah task has Dockerfile param defined",
+          "pkgTitle": "Buildah build task",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "buildah_build_task__buildah_uses_local_dockerfile",
+          "title": "Buildah task uses a local Dockerfile",
+          "pkgTitle": "Buildah build task",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "cve__cve_blockers",
+          "title": "Blocking CVE check",
+          "pkgTitle": "CVE checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "cve__cve_results_found",
+          "title": "CVE scan results found",
+          "pkgTitle": "CVE checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "cve__cve_warnings",
+          "title": "Non-blocking CVE check",
+          "pkgTitle": "CVE checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "hermetic_build_task__build_task_hermetic",
+          "title": "Build task called with hermetic param set",
+          "pkgTitle": "Hermetic build task",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "java__no_foreign_dependencies",
+          "title": "Java builds have no foreign dependencies",
+          "pkgTitle": "Java dependency checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "java__trusted_dependencies_source_list_provided",
+          "title": "Trusted Java dependency source list was provided",
+          "pkgTitle": "Java dependency checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "labels__deprecated_labels",
+          "title": "Deprecated labels",
+          "pkgTitle": "Labels",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "labels__required_labels",
+          "title": "Required labels",
+          "pkgTitle": "Labels",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "labels__disallowed_inherited_labels",
+          "title": "Disallowed inherited labels",
+          "pkgTitle": "Labels",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "labels__optional_labels",
+          "title": "Optional labels",
+          "pkgTitle": "Labels",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "olm__unpinned_references",
+          "title": "Unpinned images in OLM bundle",
+          "pkgTitle": "Olm",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "provenance_materials__git_clone_task_found",
+          "title": "Git clone task found",
+          "pkgTitle": "Provenance Materials",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "provenance_materials__git_clone_source_matches_provenance",
+          "title": "Git clone source matches materials provenance",
+          "pkgTitle": "Provenance Materials",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "redhat_manifests__redhat_manifests_missing",
+          "title": "Missing Red Hat manifests",
+          "pkgTitle": "Red Hat manifests",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "schedule__weekday_restriction",
+          "title": "Weekday Restriction",
+          "pkgTitle": "Schedule related checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "schedule__date_restriction",
+          "title": "Date Restriction",
+          "pkgTitle": "Schedule related checks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_build_service__slsa_builder_id_found",
+          "title": "SLSA Builder ID found",
+          "pkgTitle": "SLSA - Build - Build Service",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_build_service__slsa_builder_id_accepted",
+          "title": "SLSA Builder ID is known and accepted",
+          "pkgTitle": "SLSA - Build - Build Service",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__build_script_used",
+          "title": "Build task contains steps",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__build_task_image_results_found",
+          "title": "Build task set image digest and url task results",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__subject_build_task_matches",
+          "title": "Provenance subject matches build task image result",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_provenance_available__attestation_predicate_type_accepted",
+          "title": "Expected attestation predicate type found",
+          "pkgTitle": "SLSA - Provenance - Available",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__attested_source_code_reference",
+          "title": "Source reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__expected_source_code_reference",
+          "title": "Expected source code reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__source_code_reference_provided",
+          "title": "Source code reference provided",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_format_okay",
+          "title": "Materials have uri and digest",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_uri_is_git_repo",
+          "title": "Material uri is a git repo",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_include_git_sha",
+          "title": "Materials include git commit shas",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__pipeline_has_tasks",
+          "title": "Pipeline run includes at least one task",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__successful_pipeline_tasks",
+          "title": "Successful pipeline tasks",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__required_tasks_found",
+          "title": "All required tasks were included in the pipeline",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__required_tasks_list_provided",
+          "title": "Required tasks list was provided",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__pipeline_required_tasks_list_provided",
+          "title": "Required tasks list for pipeline was provided",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__future_required_tasks_found",
+          "title": "Future required tasks were found",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "test__test_data_found",
+          "title": "Test data found in task results",
+          "pkgTitle": "Test",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "test__test_results_found",
+          "title": "Test data includes results key",
+          "pkgTitle": "Test",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "test__test_results_known",
+          "title": "No unsupported test result values found",
+          "pkgTitle": "Test",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "test__required_tests_passed",
+          "title": "All required tests passed",
+          "pkgTitle": "Test",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "test__no_skipped_tests",
+          "title": "No tests were skipped",
+          "pkgTitle": "Test",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "test__no_test_warnings",
+          "title": "No tests produced warnings",
+          "pkgTitle": "Test",
+          "pkgNamespace": "release"
+        }
+      ]
+    },
+    {
+      "title": "slsa1",
+      "description": "Includes policy rules required to meet SLSA Level 1.",
+      "rules": [
+        {
+          "anchor": "slsa_build_scripted_build__build_script_used",
+          "title": "Build task contains steps",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__build_task_image_results_found",
+          "title": "Build task set image digest and url task results",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__subject_build_task_matches",
+          "title": "Provenance subject matches build task image result",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_provenance_available__attestation_predicate_type_accepted",
+          "title": "Expected attestation predicate type found",
+          "pkgTitle": "SLSA - Provenance - Available",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__attested_source_code_reference",
+          "title": "Source reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__expected_source_code_reference",
+          "title": "Expected source code reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__source_code_reference_provided",
+          "title": "Source code reference provided",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        }
+      ]
+    },
+    {
+      "title": "slsa2",
+      "description": "Includes policy rules required to meet SLSA Level 2. Special attention must be given to two requirements which are not covered by the policy rules in this collection. The first is \"Provenance - Authenticated\" which is expected to be performed when fetching the attestation via cosign or ec-cli. The second requirement is \"Provenance - Service Generated\" which is a little more complex to verify. By meeting both the \"Provenance - Authenticated\" AND \"Build - Build Service\" requirements, we can have some confidence that this requirement is met since Chains is a service that generates signed attestations with data obtained from the build service (Tekton Pipelines).",
+      "rules": [
+        {
+          "anchor": "slsa_build_build_service__slsa_builder_id_found",
+          "title": "SLSA Builder ID found",
+          "pkgTitle": "SLSA - Build - Build Service",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_build_service__slsa_builder_id_accepted",
+          "title": "SLSA Builder ID is known and accepted",
+          "pkgTitle": "SLSA - Build - Build Service",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__build_script_used",
+          "title": "Build task contains steps",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__build_task_image_results_found",
+          "title": "Build task set image digest and url task results",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__subject_build_task_matches",
+          "title": "Provenance subject matches build task image result",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_provenance_available__attestation_predicate_type_accepted",
+          "title": "Expected attestation predicate type found",
+          "pkgTitle": "SLSA - Provenance - Available",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__attested_source_code_reference",
+          "title": "Source reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__expected_source_code_reference",
+          "title": "Expected source code reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__source_code_reference_provided",
+          "title": "Source code reference provided",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_format_okay",
+          "title": "Materials have uri and digest",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_uri_is_git_repo",
+          "title": "Material uri is a git repo",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_include_git_sha",
+          "title": "Materials include git commit shas",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        }
+      ]
+    },
+    {
+      "title": "slsa3",
+      "description": "Includes policy rules required to meet SLSA Level 3. This is currently a work in progress and functionally the same as the slsa2 collection.",
+      "rules": [
+        {
+          "anchor": "slsa_build_build_service__slsa_builder_id_found",
+          "title": "SLSA Builder ID found",
+          "pkgTitle": "SLSA - Build - Build Service",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_build_service__slsa_builder_id_accepted",
+          "title": "SLSA Builder ID is known and accepted",
+          "pkgTitle": "SLSA - Build - Build Service",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__build_script_used",
+          "title": "Build task contains steps",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__build_task_image_results_found",
+          "title": "Build task set image digest and url task results",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_build_scripted_build__subject_build_task_matches",
+          "title": "Provenance subject matches build task image result",
+          "pkgTitle": "SLSA - Build - Scripted Build",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_provenance_available__attestation_predicate_type_accepted",
+          "title": "Expected attestation predicate type found",
+          "pkgTitle": "SLSA - Provenance - Available",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__attested_source_code_reference",
+          "title": "Source reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__expected_source_code_reference",
+          "title": "Expected source code reference",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_correlated__source_code_reference_provided",
+          "title": "Source code reference provided",
+          "pkgTitle": "SLSA - Verification model - Source",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_format_okay",
+          "title": "Materials have uri and digest",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_uri_is_git_repo",
+          "title": "Material uri is a git repo",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "slsa_source_version_controlled__materials_include_git_sha",
+          "title": "Materials include git commit shas",
+          "pkgTitle": "SLSA - Source - Version Controlled",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__pipeline_has_tasks",
+          "title": "Pipeline run includes at least one task",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        },
+        {
+          "anchor": "tasks__successful_pipeline_tasks",
+          "title": "Successful pipeline tasks",
+          "pkgTitle": "Tasks",
+          "pkgNamespace": "release"
+        }
+      ]
+    }
+  ],
+  "acceptableBundles": {
+    "quay.io/redhat-appstudio-tekton-catalog/task-buildah": [
+      {
+        "digest": "sha256:c37e542031de193398cd54463af146e42539b5f5c9082df56d65354494566db0",
+        "effective_on": "2023-11-06T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:c37e542031de193398cd54463af146e42539b5f5c9082df56d65354494566db0",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "c37e542031de"
+      },
+      {
+        "digest": "sha256:97f21661e237735af04b37feeeaedd328424bfa0ebd4cd0f79ac39cde17137f6",
+        "effective_on": "2023-10-25T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:97f21661e237735af04b37feeeaedd328424bfa0ebd4cd0f79ac39cde17137f6",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "97f21661e237"
+      },
+      {
+        "digest": "sha256:487b82bbdbd361d6ef3cd7a522bb6fe2f163a2d517181f13fe07565a4838f1bb",
+        "effective_on": "2023-10-21T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:487b82bbdbd361d6ef3cd7a522bb6fe2f163a2d517181f13fe07565a4838f1bb",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "487b82bbdbd3"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-clair-scan": [
+      {
+        "digest": "sha256:4d8588502c3265cca7c43f131d77661f9254b4b12e5af0cf093afcc464bfb850",
+        "effective_on": "2023-11-01T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:4d8588502c3265cca7c43f131d77661f9254b4b12e5af0cf093afcc464bfb850",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab=tags&tag=0.1",
+        "shortDigest": "4d8588502c32"
+      },
+      {
+        "digest": "sha256:64203069d09be49e45082ec02588ee0308e693c7777999ed351a78d554657c61",
+        "effective_on": "2023-10-29T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:64203069d09be49e45082ec02588ee0308e693c7777999ed351a78d554657c61",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab=tags&tag=0.1",
+        "shortDigest": "64203069d09b"
+      },
+      {
+        "digest": "sha256:aa9595966afe40bdc1935c8bec51648e2266500120b02fe336a8f26c58ae7387",
+        "effective_on": "2023-10-28T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:aa9595966afe40bdc1935c8bec51648e2266500120b02fe336a8f26c58ae7387",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab=tags&tag=0.1",
+        "shortDigest": "aa9595966afe"
+      }
+    ]
+  },
+  "pipelinePackages": {
+    "policy.pipeline.basic": {
+      "shortName": "basic",
+      "fullName": "policy.pipeline.basic",
+      "shortNamespace": "pipeline",
+      "title": "Pipeline definition sanity checks",
+      "description": "Policies to confirm the Tekton Pipeline definition has the expected kind."
+    },
+    "policy.pipeline.required_tasks": {
+      "shortName": "required_tasks",
+      "fullName": "policy.pipeline.required_tasks",
+      "shortNamespace": "pipeline",
+      "title": "Required tasks",
+      "description": "RHTAP expects that certain Tekton tasks are executed during image builds. This package includes policy rules to confirm that the pipeline definition includes those required tasks."
+    },
+    "policy.pipeline.task_bundle": {
+      "shortName": "task_bundle",
+      "fullName": "policy.pipeline.task_bundle",
+      "shortNamespace": "pipeline",
+      "title": "Task bundle",
+      "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happens during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks in a Pipeline definition are defined in task bundles, and that the task bundles are from the list of known and trusted bundles."
+    }
+  },
+  "releasePackages": {
+    "policy.release.attestation_type": {
+      "shortName": "attestation_type",
+      "fullName": "policy.release.attestation_type",
+      "shortNamespace": "release",
+      "title": "Attestation type",
+      "description": "Sanity checks related to the format of the image build's attestation."
+    },
+    "policy.release.base_image_registries": {
+      "shortName": "base_image_registries",
+      "fullName": "policy.release.base_image_registries",
+      "shortNamespace": "release",
+      "title": "Base image checks",
+      "description": "This package is responsible for verifying the base (parent) images reported in the attestation are acceptable."
+    },
+    "policy.release.buildah_build_task": {
+      "shortName": "buildah_build_task",
+      "fullName": "policy.release.buildah_build_task",
+      "shortNamespace": "release",
+      "title": "Buildah build task",
+      "description": "This package is responsible for verifying the buildah build task"
+    },
+    "policy.release.builtin.attestation": {
+      "shortName": "builtin_attestation",
+      "fullName": "policy.release.builtin.attestation",
+      "shortNamespace": "release",
+      "title": "Builtin attestation policies",
+      "description": "This package is responsible for validating attestation signature and syntax. Note that builtin policies are always included and cannot be skipped regardless of your policy."
+    },
+    "policy.release.builtin.image": {
+      "shortName": "builtin_image",
+      "fullName": "policy.release.builtin.image",
+      "shortNamespace": "release",
+      "title": "Builtin image policies",
+      "description": "This package is responsible for validating image signature. Note that builtin policies are always included and cannot be skipped regardless of your policy configuration."
+    },
+    "policy.release.cve": {
+      "shortName": "cve",
+      "fullName": "policy.release.cve",
+      "shortNamespace": "release",
+      "title": "CVE checks",
+      "description": "This package is responsible for verifying a CVE scan was performed during the build pipeline, and that the image under test does not contain CVEs of certain security levels."
+    },
+    "policy.release.external_parameters": {
+      "shortName": "external_parameters",
+      "fullName": "policy.release.external_parameters",
+      "shortNamespace": "release",
+      "title": "External parameters",
+      "description": "Verify the attribute .predicate.buildDefinition.externalParameters of a SLSA Provenance v1.0 matches the expectation."
+    },
+    "policy.release.github_certificate": {
+      "shortName": "github_certificate",
+      "fullName": "policy.release.github_certificate",
+      "shortNamespace": "release",
+      "title": "GitHub Certificate Checks",
+      "description": "Verify attributes on the certificate involved in the image signature when using slsa-github-generator on GitHub Actions with Sigstore Fulcio"
+    },
+    "policy.release.hermetic_build_task": {
+      "shortName": "hermetic_build_task",
+      "fullName": "policy.release.hermetic_build_task",
+      "shortNamespace": "release",
+      "title": "Hermetic build task",
+      "description": "This package verifies the build task in the attestation was invoked with the expected parameters to perform a hermetic build."
+    },
+    "policy.release.java": {
+      "shortName": "java",
+      "fullName": "policy.release.java",
+      "shortNamespace": "release",
+      "title": "Java dependency checks",
+      "description": "This package contains a rule to confirm that all Java dependencies were rebuilt in house rather than imported directly from potentially untrusted respositories. If the result is missing no violation is reported."
+    },
+    "policy.release.labels": {
+      "shortName": "labels",
+      "fullName": "policy.release.labels",
+      "shortNamespace": "release",
+      "title": "Labels",
+      "description": "Check if the image has the expected labels set. The rules in this package distinguish file-based catalog (FBC) images from all other images. When checking an FBC image, a policy rule may use a different set of rule data. An FBC image is detected by the presence of the operators.operatorframework.io.index.configs.v1 label."
+    },
+    "policy.release.olm": {
+      "shortName": "olm",
+      "fullName": "policy.release.olm",
+      "shortNamespace": "release",
+      "title": "Olm",
+      "description": "Checks for Operator Lifecycle Manager (OLM) bundles."
+    },
+    "policy.release.provenance_materials": {
+      "shortName": "provenance_materials",
+      "fullName": "policy.release.provenance_materials",
+      "shortNamespace": "release",
+      "title": "Provenance Materials",
+      "description": "This package provides rules for verifying the contents of the materials section of the SLSA Provenance attestation."
+    },
+    "policy.release.redhat_manifests": {
+      "shortName": "redhat_manifests",
+      "fullName": "policy.release.redhat_manifests",
+      "shortNamespace": "release",
+      "title": "Red Hat manifests",
+      "description": "Red Hat images are expected to include certain manifest files. This package verifies this requirement is met."
+    },
+    "policy.release.slsa_build_build_service": {
+      "shortName": "slsa_build_build_service",
+      "fullName": "policy.release.slsa_build_build_service",
+      "shortNamespace": "release",
+      "title": "SLSA - Build - Build Service",
+      "description": "The SLSA requirement states the following:\n\"All build steps ran using some build service, not on a developer’s workstation.\"\nThis package verifies the requirement by asserting the image was built by Tekton Pipelines."
+    },
+    "policy.release.slsa_build_scripted_build": {
+      "shortName": "slsa_build_scripted_build",
+      "fullName": "policy.release.slsa_build_scripted_build",
+      "shortNamespace": "release",
+      "title": "SLSA - Build - Scripted Build",
+      "description": "The SLSA requirement states the following:\n\"All build steps were fully defined in some sort of “build script”. The only manual command, if any, was to invoke the build script.\"\nThis package verifies the requirement by asserting the image was built by Tekton Pipelines."
+    },
+    "policy.release.slsa_provenance_available": {
+      "shortName": "slsa_provenance_available",
+      "fullName": "policy.release.slsa_provenance_available",
+      "shortNamespace": "release",
+      "title": "SLSA - Provenance - Available",
+      "description": "The SLSA Provenance Available requirement states the following:\n\"The provenance is available to the consumer in a format that the consumer accepts. The format SHOULD be in-toto SLSA Provenance, but another format MAY be used if both producer and consumer agree and it meets all the other requirements.\"\nThis package only accepts the in-toto SLSA Provenance format."
+    },
+    "policy.release.slsa_source_version_controlled": {
+      "shortName": "slsa_source_version_controlled",
+      "fullName": "policy.release.slsa_source_version_controlled",
+      "shortNamespace": "release",
+      "title": "SLSA - Source - Version Controlled",
+      "description": "The SLSA requirement states the following:\n\"Every change to the source is tracked in a version control system that meets the following requirements:\n\n  [Change history] There exists a record of the history of changes\n  that went into the revision. Each change must contain: the\n  identities of the uploader and reviewers (if any), timestamps of\n  the reviews (if any) and submission, the change\n  description/justification, the content of the change, and the\n  parent revisions.\n\n  [Immutable reference] There exists a way to indefinitely reference\n  this particular, immutable revision. In git, this is the {repo URL +\n  branch/tag/ref + commit ID}.\n\nMost popular version control system meet this requirement, such as git, Mercurial, Subversion, or Perforce.\"\nThis package verifies the requirement by asserting the image was built from a git repository."
+    },
+    "policy.release.slsa_source_correlated": {
+      "shortName": "slsa_source_correlated",
+      "fullName": "policy.release.slsa_source_correlated",
+      "shortNamespace": "release",
+      "title": "SLSA - Verification model - Source",
+      "description": "SLSA v1 verification model states:\n\"...artifacts are verified to ensure they meet the producer defined expectations of where the package source code was retrieved from...\"\nThis package correlates the provided source code reference with the source code referenced in the attestation."
+    },
+    "policy.release.sbom_spdx": {
+      "shortName": "sbom_spdx",
+      "fullName": "policy.release.sbom_spdx",
+      "shortNamespace": "release",
+      "title": "Sbom spdx",
+      "description": "Checks different properties of the SPDX SBOM attestation."
+    },
+    "policy.release.schedule": {
+      "shortName": "schedule",
+      "fullName": "policy.release.schedule",
+      "shortNamespace": "release",
+      "title": "Schedule related checks",
+      "description": "Rules that verify the current date conform to a given schedule."
+    },
+    "policy.release.step_image_registries": {
+      "shortName": "step_image_registries",
+      "fullName": "policy.release.step_image_registries",
+      "shortNamespace": "release",
+      "title": "Step image registries",
+      "description": "This package contains a rule to ensure that each task in the image's build pipeline ran using a container image from a known and presumably trusted source."
+    },
+    "policy.release.attestation_task_bundle": {
+      "shortName": "attestation_task_bundle",
+      "fullName": "policy.release.attestation_task_bundle",
+      "shortNamespace": "release",
+      "title": "Task bundle checks",
+      "description": "To be able to reproduce and audit builds accurately it's important to know exactly what happened during the build. To do this Enterprise Contract requires that all tasks are defined in a set of known and trusted task bundles. This package includes rules to confirm that the tasks that built the image were defined in task bundles, and that the task bundles used are from the list of known and trusted bundles."
+    },
+    "policy.release.tasks": {
+      "shortName": "tasks",
+      "fullName": "policy.release.tasks",
+      "shortNamespace": "release",
+      "title": "Tasks",
+      "description": "Enterprise Contract expects that a set of tasks were included in the pipeline build for each image to be released. This package includes a set of rules to verify that the expected tasks ran in the pipeline when the image was built. Required tasks are listed by the names given to them within the Tekton Bundle image. Optionally invocation parameter of a Task can be also mandated by including the name and the value in square brackets following the name of the task. For example: ``name[PARAM=val]``. Only single parameter is supported, to assert multiple parameters repeat the required task definition for each parameter seperately."
+    },
+    "policy.release.test": {
+      "shortName": "test",
+      "fullName": "policy.release.test",
+      "shortNamespace": "release",
+      "title": "Test",
+      "description": "Enterprise Contract requires that each build was subjected to a set of tests and that those tests all passed. This package includes a set of rules to verify that."
+    }
+  }
+}

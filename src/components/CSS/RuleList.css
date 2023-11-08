@@ -1,0 +1,58 @@
+/* RuleList.css */
+.container {
+    margin: 20px;
+  }
+  
+  .package-section {
+    background-color: #f3e5f5; /* light purple */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+  }
+  
+  .package-title {
+    color: #7b1fa2; /* darker purple */
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
+  
+  .package-description {
+    color: #9c27b0; /* purple */
+    margin-bottom: 15px;
+  }
+  
+  .rule {
+    background-color: #e1bee7; /* lighter purple */
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for each rule */
+  }
+  
+  .rule-title {
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .rule-description {
+    margin: 5px 0;
+    font-style: italic;
+  }
+  
+  .rule-code {
+    margin: 5px 0;
+    font-family: monospace;
+  }
+  
+  /* Additional styling for the checkbox and label if needed */
+  .checkbox {
+    margin-right: 10px;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* space between checkbox rows */
+  }
+  
