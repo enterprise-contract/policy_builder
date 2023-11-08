@@ -1,0 +1,32 @@
+name: Build and Deploy
+# TODO// make the deploy like this https://github.com/enterprise-contract/review-rot/blob/main/.github/workflows/publish.yaml
+# on:
+#   push:
+#     branches:
+#       - main  
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v4
+
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v4
+#       with:
+#         node-version: '21'  
+
+#     - name: Install dependencies
+#       run: npm install
+
+#     - name: Build React app
+#       run: npm run build
+
+#     - name: Deploy to GitHub Pages
+#       uses: JamesIves/github-pages-deploy-action@v4.4.3
+#       with:
+#         branch: demoWebsite
+#         folder: build  
+#         token: ${{ secrets.GHTOKEN}}

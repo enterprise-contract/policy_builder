@@ -1,40 +1,34 @@
-# Getting Started with Policy Builder POC App
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Policy Builder for EC 🛠️
 
-```
-policy-builder/
-  src/
-    components/  # UI components like buttons, inputs, etc.
-    data/        # Static data, such as the JSON file with rules.
-    hooks/       # Custom React hooks for state management, data fetching, etc.
-    utils/       # Utility functions for tasks like YAML parsing.
-    views/       # Components that represent full pages or major parts of a page.
-    App.js       # The main application component.
-    index.js     # The entry point for the React application.
+⚠️ **Note**: The Policy Builder is currently a POC and is not fully operational. 
 
-```
+## Introduction 
+Policy Builder for EC, aimed at enhancing the experience of creating `policy.yaml` files for Enterprise Contract (EC). It's designed to be a user-friendly and efficient alternative to manual editing.
 
-## Available Scripts
+## Key Features 
 
-In the project directory, you can run:
+- **Rule Data Source**: Leverages EC Policies Data for a comprehensive rule set.
+- **Modern Framework**: Built with a popular JavaScript framework.
 
-### `npm start`
+## How to Use 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Find Rules**: Search and navigate through rules with ease.
+2. **Craft Your Policy**: Add rules.
+3. **Export**: Create your `policy.yaml` file with a single click.
+4. **EC Ready**: The exported file is immediately ready for use with EC.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## License 
 
-### `npm test`
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tools and Libraries 
 
-### `npm run build`
+This project was brought to life using the following tools and libraries:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Node.js**: The runtime environment that executes the JavaScript code server-side.
+- **npm**: The package manager for managing JavaScript packages.
+- **React**: The JavaScript library used for building the user interface.
+- **Create React App**: The starting boilerplate used to set up new React projects.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+
