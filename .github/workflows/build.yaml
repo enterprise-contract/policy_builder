@@ -8,7 +8,7 @@ name: Build
       - main
 
 jobs:
-  build-hugo:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,10 +21,13 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'package-lock.json'
 
+      - name: Fetch dependecies
+        run: npm clean-install
+
       - name: Build
         env:
           PUBLIC_URL: .
-        run: node run build
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
