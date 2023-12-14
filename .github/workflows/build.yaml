@@ -1,0 +1,47 @@
+---
+name: Build
+
+'on':
+  workflow_call:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-hugo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup NodeJS environment
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+
+      - name: Build
+        env:
+          PUBLIC_URL: .
+        run: node run build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: build
+          name: builder
+
+  pull-request-data:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Create pull request data
+        run: |
+          mkdir pull_request
+          echo ${{ github.event.pull_request.number }} > ./pull_request/number
+      - name: Upload pull request data
+        uses: actions/upload-artifact@v3
+        with:
+          path: .
+          name: pull-request-data
