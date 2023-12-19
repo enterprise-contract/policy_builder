@@ -2,6 +2,7 @@
   "homepage" : "http://seanconroy.link/policy_builder/",
   "name": "policy_builder",
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "author": {
     "name": "Sean Conroy",
     "email": "sconroy@redhat.com"
