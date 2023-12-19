@@ -32,8 +32,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          path: build
-          name: builder
+          path: dist
+          name: dist
 
   pull-request-data:
     runs-on: ubuntu-latest

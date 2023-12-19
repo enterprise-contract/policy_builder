@@ -28,5 +28,11 @@ This project was brought to life using the following tools and libraries:
 - **Node.js**: The runtime environment that executes the JavaScript code server-side.
 - **npm**: The package manager for managing JavaScript packages.
 - **React**: The JavaScript library used for building the user interface.
-- **Create React App**: The starting boilerplate used to set up new React projects.
----
+
+## Developing
+
+Run `npm run dev` and open http://localhost:5173/ in your Browser, changes to
+the code will be automatically reloaded.
+
+To build run `npm run build` and the resulting files will be placed in the
+`dist` directory.
