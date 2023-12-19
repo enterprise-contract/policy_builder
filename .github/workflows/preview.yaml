@@ -1,0 +1,91 @@
+# Copyright 2022 Red Hat, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+---
+name: Preview website
+
+'on':
+  workflow_run:
+    workflows: ["Build"]
+    types:
+      - completed
+
+defaults:
+  run:
+    shell: bash -o errexit -o pipefail -o nounset -o errtrace {0}
+
+jobs:
+  preview:
+    permissions:
+      pull-requests: write
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    steps:
+      - name: Download pull request artifact
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: ${{ github.event.workflow_run.id }},
+            });
+            const downloads = await Promise.all(
+              artifacts.data.artifacts.map(a => github.rest.actions.downloadArtifact({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                artifact_id: a.id,
+                archive_format: 'zip'
+              }))
+            );
+            const fs = require('fs');
+            fs.mkdirSync('${{github.workspace}}/artifacts')
+            downloads.forEach((d, i) => fs.writeFileSync(`${{github.workspace}}/artifacts/data-${i}.zip`, Buffer.from(d.data)));
+      - name: Unzip website artifact
+        run: |
+          mkdir public
+          unzip -q 'artifacts/data-[0-1].zip' -d public
+          rm -rf artifacts
+      - name: Setup pull request data
+        id: data
+        run: |
+          PR_NUMBER=$(head -1 public/pull_request/number)
+          PR_NUMBER=${PR_NUMBER//[^0-9]/}
+          echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_OUTPUT
+          echo "PR_URL=https://github.com/${GITHUB_REPOSITORY}/pull/${PR_NUMBER}" >> $GITHUB_OUTPUT
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          path: code
+      - name: Preview
+        id: preview
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          npm --prefix code ci
+          npm --prefix code exec -- wrangler pages deploy public --project-name enterprise-contract --branch pr-${{ steps.data.outputs.PR_NUMBER }} | tee out.txt
+          grep 'Deployment complete! Take a peek over at ' out.txt | sed -e 's/.*over at /PREVIEW_URL=/' >> $GITHUB_OUTPUT
+      - name: Add comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: Number(${{ steps.data.outputs.PR_NUMBER }}),
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🚀 Preview is available at ${{ steps.preview.outputs.PREVIEW_URL }}`
+            })
