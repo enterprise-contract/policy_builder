@@ -37,7 +37,7 @@ jobs:
       - name: Download website artifact
         uses: actions/download-artifact@v3
         with:
-          name: builder
+          name: dist
           path: '.'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
