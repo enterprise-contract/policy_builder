@@ -30,7 +30,7 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           path: dist
           name: dist
@@ -44,7 +44,7 @@ jobs:
           mkdir pull_request
           echo ${{ github.event.pull_request.number }} > ./pull_request/number
       - name: Upload pull request data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           path: .
           name: pull-request-data
