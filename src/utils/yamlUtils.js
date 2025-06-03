@@ -4,8 +4,8 @@ export const generateYaml = (selectedRules) => {
   const sources = [{
     name: "Custom",
     policy: [
-      "github.com/enterprise-contract/ec-policies//policy/lib",
-      "github.com/enterprise-contract/ec-policies//policy/release"
+      "github.com/conforma/policy//policy/lib",
+      "github.com/conforma/policy//policy/release"
     ],
     data: [], 
     config: {
